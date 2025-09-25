@@ -1,13 +1,13 @@
 :root {
+  --font-style: normal;
+
   --font-family-main: 'Roboto', sans-serif;
   --font-size-main: 16px;
   --font-weight-main: 400;
-  --font-style-main: Regular;
   --font-line-height-main: 24px;
 
   --font-family-header: 'Jost', sans-serif;
   --font-weight-header: 500;
-  --font-style-header: Medium;
 
   --font-size-header-l: 32px;
   --font-line-height-header-l: 40px;
@@ -17,22 +17,18 @@
 
   --font-size-header-s: 20px;
   --font-line-height-header-s: 24px;
+
+  --font-family-header-xs: 'Roboto', sans-serif;
+  --font-size-header-xs: 16px;
+  --font-line-height-header-xs: 24px;
   
   --font-family-person-header: 'Open Sans', sans-serif;
   --font-size-person-header: 20px;
   --font-weight-person-header: 600;
-  --font-style-person-header: SemiBold;
   --font-line-height-person-header: 24px;
-
-  --font-family-person-subheader: 'Roboto', sans-serif;
-  --font-size-person-subheader: 16px;
-  --font-weight-person-subheader: 500;
-  --font-style-person-subheader: Medium;
-  --font-line-height-person-subheader: 24px;
 
   --font-family-caption: 'Roboto', sans-serif;
   --font-size-caption: 12px;
   --font-weight-caption: 400;
-  --font-style-caption: Regular;
   --font-line-height-caption: 16px;
 }
