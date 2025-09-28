@@ -1,0 +1,82 @@
+.input__container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    row-gap: 4px;
+}
+
+.input__wrapper {
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.input__label {
+    display: block;
+    /* Переменные на данном этапе не работают */
+    /* Заменил переменные на нужные данные для storybook */
+    /* font-family: var(--font-family-main);
+    font-weight: var(--font-weight-main);
+    font-size: var(--font-size-main);
+    color: var(--font-color-primary);
+    line-height: var(--font-line-height-main); */
+
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #253017;
+    line-height: 24px;
+
+    letter-spacing: 0.02em;
+    text-align: left;
+}
+
+.input {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 12px;
+    background-color: #FFFFFF;
+
+    /* background-color: var(--input-bg);
+    border: 1px solid var(--font-color-secondary);
+    font-family: var(--font-family-main);
+    font-weight: var(--font-weight-main);
+    font-size: var(--font-size-main);
+    line-height: var(--font-line-height-main);
+    color: var(--font-color-primary); */
+
+    border: 1px solid #69735d;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #253017;
+
+    font-style: normal;
+} 
+
+.input__error {
+    /* border-color: var(--error-color); */
+    border-color: #BF3920;
+}
+
+.input__message {
+    /* color: var(--font-color-primary);
+    font-family: var(--font-family-caption);
+    font-weight: var(--font-weight-caption);
+    font-size: var(--font-size-caption);
+    line-height: var(--font-line-height-caption); */
+    color: #253017;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+
+    text-align: left;
+    letter-spacing: 0.02em;
+}
+
+.input__message_error {
+    /* color: var(--error-color); */
+    color: #BF3920;
+}
