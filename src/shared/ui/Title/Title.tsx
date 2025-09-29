@@ -3,6 +3,13 @@ import clsx from 'clsx';
 import styles from './Title.module.css';
 import type { TitleProps } from './Title.types';
 
+const defaultSize: Record<TitleProps['as'], Required<TitleProps>['size']> = {
+  h1: 'lg',
+  h2: 'md',
+  h3: 'sm',
+  h4: 'xs',
+};
+
 export const Title: React.FC<TitleProps> = ({
   as: Tag,
   size,
@@ -10,9 +17,12 @@ export const Title: React.FC<TitleProps> = ({
   className,
   ...props
 }) => {
+  
+  const titleSize = size ?? defaultSize[Tag];
+
   const classNames = clsx(
     styles.title,
-    styles[size],
+    styles[titleSize],
     className
   );
 

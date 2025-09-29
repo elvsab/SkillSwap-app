@@ -12,6 +12,6 @@ export type TitleProps = {
        * md- 24px; 
        * sm - 20px; 
        * xs - 16px **/
-  size: 'lg' | 'md' | 'sm' | 'xs';
+  size?: 'lg' | 'md' | 'sm' | 'xs';
   children: React.ReactNode;
 } & HTMLAttributes<HTMLHeadingElement>;
