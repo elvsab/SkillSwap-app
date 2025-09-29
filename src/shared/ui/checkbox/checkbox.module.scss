@@ -3,7 +3,7 @@
     align-items: center;
     cursor: pointer;
     user-select: none;
-    gap: 8px;
+    gap: 10px;
 }
 
 .checkbox__input {
@@ -16,7 +16,7 @@
 .checkbox__box {
     width: 24px;
     height: 24px;
-    border: 1px solid var(--font-color-primary);
+    border: 2px solid var(--font-color-primary);
     border-radius: 5px;
     background-color: var(--bg-color);
     display: inline-block;

@@ -1,43 +1,39 @@
 import React from 'react';
 import clsx from 'clsx';
+import { useRef, useEffect } from 'react';
 import styles from './checkbox.module.scss';
-import type { CheckboxVariant, CheckboxProps } from './types';
+import type { CheckboxProps } from './types';
 
 export const Checkbox: React.FC<CheckboxProps> = ({
     variant,
-    defaultVariant = 'unchecked',
     onChange,
     label,
     id,
     ariaLabel,
 }) => {
-    const [internalVariant, setInternalVariant] = React.useState<CheckboxVariant>(defaultVariant);
-    
-    const current = variant ?? internalVariant;
+    const inputRef = useRef<HTMLInputElement | null>(null);
 
-    const handleClick = () => {
-        let next: CheckboxVariant;
-        if (current === "unchecked") next = "mixed";
-        else if (current === "mixed") next = "checked";
-        else next = "unchecked";
-        setInternalVariant(next);
-        onChange?.(next);
-    };
+    useEffect(() => {
+        if (inputRef.current) {
+            inputRef.current.indeterminate = variant === 'mixed';
+        }
+    }, [variant]);
 
 return (
     <label
       className={clsx(styles.checkbox)}
-      data-variant={current}
+      data-variant={variant}
       htmlFor={id}
     >
       <input
+        ref={inputRef}
         type="checkbox"
         id={id}
-        onChange={handleClick}
+        onChange={onChange}
         aria-label={ariaLabel}
         className={styles.checkbox__input}
-        checked={current === 'checked'}
-        aria-checked={current === 'mixed' ? 'mixed' : current === 'checked'}
+        checked={variant === 'checked'}
+        aria-checked={variant === 'mixed' ? 'mixed' : variant === 'checked'}
       />
       <span className={styles.checkbox__box} aria-hidden="true"/>
       {label && <span className={styles.checkbox__label}>{label}</span>}
