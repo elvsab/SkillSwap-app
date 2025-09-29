@@ -30,7 +30,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // Базовые примеры для каждого размера
-export const Large: Story = {
+export const H1: Story = {
   args: {
     as: 'h1',
     size: 'lg',
@@ -38,7 +38,7 @@ export const Large: Story = {
   },
 };
 
-export const Medium: Story = {
+export const H2: Story = {
   args: {
     as: 'h2',
     size: 'md',
@@ -46,7 +46,7 @@ export const Medium: Story = {
   },
 };
 
-export const Small: Story = {
+export const H3: Story = {
   args: {
     as: 'h3',
     size: 'sm',
@@ -54,7 +54,7 @@ export const Small: Story = {
   },
 };
 
-export const ExtraSmall: Story = {
+export const H4: Story = {
   args: {
     as: 'h4',
     size: 'xs',
@@ -65,16 +65,17 @@ export const ExtraSmall: Story = {
 // Демонстрация всех вариантов в одной таблице
 export const AllVariants = () => (
   <div style={{ display: 'grid', gap: '20px' }}>
-    {(['h1', 'h2', 'h3', 'h4'] as const).map((tag) =>
-      (['lg', 'md', 'sm', 'xs'] as const).map((size) => (
-        <Title
-          key={`${tag}-${size}`}
-          as={tag}
-          size={size}
-        >
-          {tag} с размером {size}
-        </Title>
-      ))
-    )}
+    <Title as="h1" size="lg">
+      h1 с размером lg (32px)
+    </Title>
+    <Title as="h2" size="md">
+      h2 с размером md (24px)
+    </Title>
+    <Title as="h3" size="sm">
+      h3 с размером sm (20px)
+    </Title>
+    <Title as="h4" size="xs">
+      h4 с размером xs (16px)
+    </Title>
   </div>
 );

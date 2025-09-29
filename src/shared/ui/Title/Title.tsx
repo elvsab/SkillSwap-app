@@ -1,4 +1,5 @@
 import React from 'react';
+import clsx from 'clsx';
 import styles from './Title.module.css';
 import type { TitleProps } from './Title.types';
 
@@ -9,11 +10,11 @@ export const Title: React.FC<TitleProps> = ({
   className,
   ...props
 }) => {
-  const classNames = [
+  const classNames = clsx(
     styles.title,
     styles[size],
     className
-  ].filter(Boolean).join(' ');
+  );
 
   return (
     <Tag className={classNames} {...props}>
