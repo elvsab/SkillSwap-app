@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import styles from "./button.module.css";
+import styles from "./Button.module.css";
 export interface ButtonProps {
   type?: "button" | "submit" | "reset";
   /** Цвет текста */
