@@ -1,0 +1,12 @@
+.button {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: var(--font-size-main);
+  border-radius: var(--font-size-caption);
+  font-weight: var(--font-weight-main);
+  line-height: var(--font-line-height-header-s);
+  font-family: var(--font-family-main);
+  color: var(--font-color-primary);
+  background-color: transparent;
+}
