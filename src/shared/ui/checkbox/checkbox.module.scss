@@ -21,7 +21,7 @@
     background-color: var(--bg-color);
     display: inline-block;
     position: relative;
-    transition: background-color 0.15s ease, border-coclor 0.15s ease;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
 }
 
 .checkbox[data-variant='checked'] .checkbox__box,

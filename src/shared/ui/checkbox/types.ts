@@ -1,6 +1,6 @@
 import type { ChangeEvent } from "react";
 
-type CheckboxVariant = 'unchecked' | 'mixed' | 'checked';
+export type CheckboxVariant = 'unchecked' | 'mixed' | 'checked';
 
 export type CheckboxProps = {
     variant: CheckboxVariant;
