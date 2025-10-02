@@ -9,4 +9,45 @@
   font-family: var(--font-family-main);
   color: var(--font-color-primary);
   background-color: transparent;
+  border: none;
+}
+
+.primary {
+  background-color: var(--font-color-accent);
+  padding: 12px 24px;
+}
+
+.primary:hover {
+  background-color: var(--button-color-hover);
+}
+
+.primary:active {
+  background-color: var(--font-color-link);
+  color: var(--input-bg);
+}
+
+.primary:disabled {
+  background-color: var(--button-color-disabled);
+  color: var(--font-color-secondary);
+}
+
+.secondary {
+  background-color: var(--input-bg);
+  border: 1px solid var(--font-color-accent);
+  padding: 12px 24px;
+}
+
+.secondary:hover {
+  border: 1px solid var(--button-color-hover);
+  color: var(--font-color-secondary);
+}
+
+.secondary:active {
+  border: 1px solid var(--font-color-link);
+  color: var(--font-color-primary);
+}
+
+.secondary:disabled {
+  border: 1px solid var(--button-color-disabled);
+  color: var(--font-color-disabled);
 }

@@ -11,13 +11,11 @@ const meta = {
   },
   tags: ["autodocs"],
   argTypes: {
-    backgroundColor: { control: "color" },
     textColor: { control: "color" },
-    borderColor: { control: "color" },
-    borderWidth: { control: "text" },
     padding: { control: "text" },
     buttonWidth: { control: "text" },
     icon: { control: "text" },
+    secondClass: { control: "text" },
   },
   args: { onClick: fn() },
 } satisfies Meta<typeof Button>;
@@ -26,27 +24,23 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // Примеры
-export const Default: Story = {
+export const TertiaryDefault: Story = {
   args: {
     label: "О проекте",
   },
 };
 
-export const Green: Story = {
+export const Primary: Story = {
   args: {
     label: "Подробнее",
-    backgroundColor: "var(--font-color-accent)",
-    textColor: "var(--font-color-primary)",
-    padding: "12px 24px",
+    secondClass: "primary",
   },
 };
 
-export const WithBorder: Story = {
+export const Secondary: Story = {
   args: {
     label: "Войти",
-    backgroundColor: "#fff",
-    borderColor: "var(--font-color-accent)",
-    padding: "12px 24px",
+    secondClass: "secondary",
   },
 };
 
