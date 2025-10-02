@@ -1,8 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import * as React from 'react';
-import { useState } from 'react';
 import { Checkbox } from './checkbox';
-import type { CheckboxVariant } from './types';
+import { ControlledCheckboxStory } from './ControlledCheckboxStory';
 
 const meta: Meta<typeof Checkbox> = {
   title: 'shared/ui/checkbox',
@@ -60,16 +58,6 @@ export const Mixed: Story = {
 
 export const ControlledToggle: Story = {
   name: 'Переключение состояний',
-  render: (args) => {
-    const [variant, setVariant] = useState<CheckboxVariant>(args.variant ?? 'unchecked');
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      const next: CheckboxVariant = e.target.indeterminate ? 'mixed' : e.target.checked ? 'checked' : 'unchecked';
-      setVariant(next);
-      args.onChange?.(e);
-    };
-
-    return <Checkbox {...args} variant={variant} onChange={handleChange} />;
-  },
+  render: (args) => <ControlledCheckboxStory {...args} />,
   args: { label: 'Кликабельный чекбокс', variant: 'unchecked' },
 };
