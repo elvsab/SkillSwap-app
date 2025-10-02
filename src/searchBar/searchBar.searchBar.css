@@ -1,0 +1,24 @@
+.search-bar {
+  position: relative;
+  max-width: 527px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.search-bar-input {
+  width: 100%;
+  margin: 12px 24px 12px 44px;
+  border: 2px solid #ffffff; 
+  font-size: 16px;
+  font-weight: 400;
+  color: #69735D;
+}
+
+.search-bar-icon {
+  position: absolute;
+  margin-left: 12px; 
+  margin-top: 12px;
+  margin-right: 8px;
+}
+
+
