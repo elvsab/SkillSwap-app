@@ -1,3 +1,5 @@
+import type { FunctionComponent, SVGProps } from "react";
+
 export interface ButtonProps {
   type?: "button" | "submit" | "reset";
   /** Цвет текста */
@@ -13,7 +15,7 @@ export interface ButtonProps {
   /** Для состояния загрузки, если надо будет */
   loading?: boolean;
   /** Если нужно добавить иконку справа */
-  icon?: string;
+  icon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>> | string;
   /** Добавить класс из стилей */
   secondClass?: string;
   disabled?: boolean;
