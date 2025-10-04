@@ -1,15 +1,11 @@
 import { FC } from 'react';
-import './searchBar.searchBar.css'
-
-interface SearchBarProps {
-  searchText: string;
-  onSearchChange: (value: string) => void;
-}
+import styles from './searchBar.module.scss';
+import type { SearchBarProps } from './types';
 
 export const SearchBar: FC<SearchBarProps> = ({searchText, onSearchChange}) => {
   return (
-    <div className="search-bar">
-      <div className="search-bar-icon">
+    <div className={styles.search_bar}>
+      <div className={styles.search_bar__icon}>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M11.5349 21.0698C6.27908 21.0698 2 16.7907 2 11.5349C2 6.27908 6.27908 2 11.5349 2C16.7907 2 21.0698 6.27908 21.0698 11.5349C21.0698 16.7907 16.7907 21.0698 11.5349 21.0698ZM11.5349 3.39535C7.04187 3.39535 3.39535 7.05118 3.39535 11.5349C3.39535 16.0186 7.04187 19.6745 11.5349 19.6745C16.0279 19.6745 19.6745 16.0186 19.6745 11.5349C19.6745 7.05118 16.0279 3.39535 11.5349 3.39535Z" fill="#69735D"/>
         <path d="M21.3024 21.9996C21.1257 21.9996 20.9489 21.9345 20.8094 21.7949L18.9489 19.9345C18.6791 19.6647 18.6791 19.2182 18.9489 18.9484C19.2187 18.6787 19.6652 18.6787 19.935 18.9484L21.7954 20.8089C22.0652 21.0787 22.0652 21.5252 21.7954 21.7949C21.6559 21.9345 21.4791 21.9996 21.3024 21.9996Z" fill="#69735D"/>
@@ -20,7 +16,7 @@ export const SearchBar: FC<SearchBarProps> = ({searchText, onSearchChange}) => {
         placeholder="Искать навык"
         value={searchText}
         onChange={(e) => onSearchChange(e.target.value)}
-        className="search-bar-input"
+        className={styles.search_bar__input}
       />
     </div>
   );

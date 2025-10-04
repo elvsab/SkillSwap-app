@@ -1,11 +1,11 @@
-import { useEffect, useState, useMemo } from 'react'
+import { useState, useMemo } from 'react'
 //import reactLogo from './assets/react.svg'
 // импорт удалён — demo-asset удалён из проекта
 import viteLogo from '/vite.svg'
 import './App.css'
-import { SearchBar } from './searchBar/searchBar'
+import { SearchBar } from './shared/ui/SearchBar/SearchBar'
 import { useDebounce } from './shared/hooks/useDebounce'
-import { skillsData } from './searchBar/testData'
+import { users } from './api/mockData.json'
 
 
 function App() {
@@ -15,15 +15,22 @@ function App() {
   const [searchText, setSearchText] = useState('');
   const debouncesSearchText = useDebounce(searchText, 300);
 
+  // TODO: filteredCards нужно будет подставить в компонент отображающий карточки на странице (будет добавлен позже)
   const filteredCards = useMemo(() => {
     if (!debouncesSearchText.trim()) {
-      return skillsData
+      return users
     };
     const lowercasedSearchText = debouncesSearchText.toLowerCase();
 
-    return skillsData.filter((card) => 
-      card.name.toLowerCase().includes(lowercasedSearchText) ||
-      card.description.toLowerCase().includes(lowercasedSearchText)
+    return users.filter((user) => 
+      user.name.toLowerCase().includes(lowercasedSearchText) ||
+      user.city.toLowerCase().includes(lowercasedSearchText) ||
+      user.skillsCanTeach.some(skill => 
+        skill.title.toLowerCase().includes(lowercasedSearchText)
+      ) ||
+      user.skillsWantsToLearn.some(skill => 
+        skill.title.toLowerCase().includes(lowercasedSearchText)
+      )
     );
   }, [debouncesSearchText]);
 
