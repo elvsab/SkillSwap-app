@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { type InputProps } from "./types";
+import { type InputProps } from "./Input.types";
 import styles from "./Input.module.scss";
 import { forwardRef, useState } from "react";
 import EyeIcon from "../../assets/icons/inputs/eye.svg";
