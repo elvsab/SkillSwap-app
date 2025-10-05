@@ -1,6 +1,7 @@
 .button {
   display: flex;
   align-items: center;
+  gap: 8px;
   cursor: pointer;
   font-size: var(--font-size-main);
   border-radius: var(--font-size-caption);
