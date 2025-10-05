@@ -1,2 +1,2 @@
-export { Input, InputEmail, InputText } from './input';
-export type * from './types';
+export { Input, InputEmail, InputPassword, InputText } from "./Input";
+export type * from "./Input.types";
