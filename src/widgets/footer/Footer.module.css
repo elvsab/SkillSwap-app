@@ -41,7 +41,7 @@
   font-size: var(--font-size-main);
   font-family: var(--font-family-main);
   font-weight: var(--font-weight-caption);
-  color: var(--font-color-secondary);
+  color: var(--font-color-primary);
   line-height: var(--font-line-height-main);
   white-space: nowrap;
   text-decoration: none;
