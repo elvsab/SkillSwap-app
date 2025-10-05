@@ -26,6 +26,7 @@ type Story = StoryObj<typeof meta>;
 export const TertiaryDefault: Story = {
   args: {
     label: "О проекте",
+    secondClass: "tertiary",
   },
 };
 
