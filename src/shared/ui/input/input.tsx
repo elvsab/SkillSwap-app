@@ -30,12 +30,13 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             {...props}
           />
           {isPasswordInput && (
-            <div
+            <button
               className={styles.input__icon_toggle_visibility}
               onClick={toggleVisibility}
+              aria-label={visible ? "Скрыть пароль" : "Показать пароль"}
             >
               {visible ? <EyeSlashIcon /> : <EyeIcon />}
-            </div>
+            </button>
           )}
         </div>
         {message ? (
