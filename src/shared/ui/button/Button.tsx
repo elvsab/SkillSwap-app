@@ -27,9 +27,16 @@ export const Button = ({
       onClick={onClick}
     >
       {loading ? "Загрузка..." : label}
-      {icon && !loading && (
-        <img src={icon} alt="" className={clsx(styles.icon)} />
-      )}
+      {!loading &&
+        icon &&
+        (typeof icon === "string" ? (
+          <img src={icon} alt="" className={styles.icon} />
+        ) : (
+          (() => {
+            const Icon = icon; // 👈 сохранить компонент в переменную
+            return <Icon className={styles.icon} />;
+          })()
+        ))}
     </button>
   );
 };

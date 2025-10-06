@@ -1,6 +1,7 @@
 .button {
   display: flex;
   align-items: center;
+  gap: 8px;
   cursor: pointer;
   font-size: var(--font-size-main);
   border-radius: var(--font-size-caption);
@@ -50,4 +51,19 @@
 .secondary:disabled {
   border: 1px solid var(--button-color-disabled);
   color: var(--font-color-disabled);
+}
+
+.tertiary {
+  background-color: var(--card-bg);
+  padding: 12px 24px;
+}
+
+.tertiary:disabled {
+  border: 1px solid var(--button-color-disabled);
+  color: var(--font-color-disabled);
+}
+
+.tertiary:hover {
+  border: 1px solid var(--button-color-hover);
+  color: var(--font-color-secondary);
 }
