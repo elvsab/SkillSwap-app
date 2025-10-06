@@ -1,0 +1,58 @@
+.header {
+  width: 1440px;
+  padding: 36px 36px 20px 36px;
+  background-color: var(--bg-color);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav {
+  display: flex;
+  gap: 24px;
+}
+
+.link {
+  font-size: var(--font-size-main);
+  font-family: var(--font-family-main);
+  font-weight: var(--font-weight-caption);
+  color: var(--font-color-primary);
+  line-height: var(--font-line-height-main);
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: var(--font-color-link);
+}
+
+.input {
+  width: 527px;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.icons_user {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.profile_name {
+  font-size: var(--font-size-main);
+  font-family: var(--font-family-main);
+  font-weight: var(--font-weight-main);
+  line-height: var(--font-line-height-main);
+  color: var(--font-color-primary);
+}
