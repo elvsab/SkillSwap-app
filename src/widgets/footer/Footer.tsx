@@ -12,26 +12,26 @@ export const Footer: React.FC = () => {
       </div>
       <div className={clsx(styles.right_side)}>
         <div className={clsx(styles.right_side_item)}>
-          <Link to="/" className={clsx(styles.link)}>
+          <Link to="/about" className={clsx(styles.link)}>
             О проекте
           </Link>
-          <Link to="/" className={clsx(styles.link)}>
+          <Link to="/skills" className={clsx(styles.link)}>
             Все навыки
           </Link>
         </div>
         <div className={clsx(styles.right_side_item)}>
-          <Link to="/" className={clsx(styles.link)}>
+          <Link to="/contacts" className={clsx(styles.link)}>
             Контакты
           </Link>
-          <Link to="/" className={clsx(styles.link)}>
+          <Link to="/blog" className={clsx(styles.link)}>
             Блог
           </Link>
         </div>
         <div className={clsx(styles.right_side_item)}>
-          <Link to="/" className={clsx(styles.link)}>
+          <Link to="/privacy" className={clsx(styles.link)}>
             Политика конфиденциальности
           </Link>
-          <Link to="/" className={clsx(styles.link)}>
+          <Link to="/terms" className={clsx(styles.link)}>
             Пользовательское соглашение
           </Link>
         </div>
