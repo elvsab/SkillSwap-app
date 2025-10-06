@@ -14,12 +14,15 @@ import CrossIcon from "../../shared/assets/icons/ui/cross.svg";
 import chevronDownIcon from "../../shared/assets/icons/ui/chevron-down.svg";
 import Avatar from "../../shared/assets/icons/profile/user.svg";
 import { SkillsList } from "@/shared/ui/SkillsList";
+import { SearchBar } from "../../shared/ui/SearchBar";
 
 type HeaderVariant = "guest" | "user" | "auth";
 
 export interface HeaderProps {
   variant: HeaderVariant;
   name: string;
+  searchText?: string;
+  onSearchChange?: (value: string) => void;
 }
 
 export const Header = ({ variant, name }: HeaderProps) => {

@@ -1,0 +1,38 @@
+@import '../app/styles/colors.scss';
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+}
+
+.mainWrapper {
+  flex: 1;
+  width: 100%;
+}
+
+.mainContent {
+  display: flex;
+  margin: 0;
+  padding: 20px;
+  gap: 30px;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 0;
+}
+
+.sidebar {
+  width: 324px;
+  flex-shrink: 0;
+  height: fit-content;
+  position: sticky;
+  top: 20px;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
