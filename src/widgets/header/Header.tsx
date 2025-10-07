@@ -21,20 +21,20 @@ export interface HeaderProps {
 
 export const Header = ({ variant, name }: HeaderProps) => {
   return (
-    <header className={clsx(styles.header)}>
+    <header className={styles.header}>
       <Logo />
 
       {variant !== "auth" && (
         <>
-          <nav className={clsx(styles.nav)}>
-            <Link className={clsx(styles.link)} to="/">
+          <nav className={styles.nav}>
+            <Link className={clsx(styles.link)} to="/about">
               <Button label="О проекте" />
             </Link>
-            <Link className={clsx(styles.link)} to="/">
+            <Link className={clsx(styles.link)} to="/skills">
               <Button label="Навыки" icon={chevronDownIcon} />
             </Link>
           </nav>
-          <div className={clsx(styles.input)}>
+          <div className={styles.input}>
             <Input type="text" placeholder="Искать навык" />
           </div>
         </>
@@ -50,14 +50,14 @@ export const Header = ({ variant, name }: HeaderProps) => {
       )}
 
       {variant === "guest" && (
-        <div className={clsx(styles.buttons)}>
+        <div className={styles.buttons}>
           <Button label="Войти" secondClass="secondary" />
           <Button label="Зарегистрироваться" secondClass="primary" />
         </div>
       )}
 
       {variant === "user" && (
-        <div className={clsx(styles.icons_user)}>
+        <div className={styles.icons_user}>
           <IconWrapper
             icon={ThemeIcon}
             width={24}
@@ -76,8 +76,8 @@ export const Header = ({ variant, name }: HeaderProps) => {
             height={24}
             ariaLabel="HeartIcon"
           />
-          <div className={clsx(styles.profile)}>
-            <span className={clsx(styles.profile_name)}>{name}</span>
+          <div className={styles.profile}>
+            <span className={styles.profile_name}>{name}</span>
             <IconWrapper
               icon={Avatar}
               width={48}
