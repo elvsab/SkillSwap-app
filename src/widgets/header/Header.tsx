@@ -2,7 +2,7 @@ import clsx from "clsx";
 import styles from "./Header.module.css";
 import Logo from "../../shared/assets/logo/logo.svg";
 import { Button } from "../../shared/ui/button";
-import { Input } from "../../shared/ui/input";
+import { Input } from "../../shared/ui/index";
 import { IconWrapper } from "../../shared/ui/iconWrapper";
 import { Link } from "react-router-dom";
 import ThemeIcon from "../../shared/assets/icons/ui/moon.svg";

@@ -18,3 +18,8 @@
   display: block;
   object-fit: contain;
 }
+
+.iconCircle {
+  border-radius: 50%;
+  overflow: hidden;
+}
