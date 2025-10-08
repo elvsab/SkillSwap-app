@@ -19,4 +19,6 @@ export interface ButtonProps {
   /** Добавить класс из стилей */
   secondClass?: string;
   disabled?: boolean;
+  className?: string;
+  iconPosition?: 'left' | 'right'; 
 }
