@@ -1,22 +1,36 @@
-import { useEffect } from "react";
-import { useDispatch } from "./app/providers/store";
-
-import {
-  fetchCategories,
-  fetchSubcategories,
-} from "./entities/skills/model/skillsSlice";
-import { RouterProvider } from "react-router-dom";
-import router from "./app/providers/router/router";
+import { useState } from 'react'
+//import reactLogo from './assets/react.svg'
+// импорт удалён — demo-asset удалён из проекта
+import viteLogo from '/vite.svg'
+import './App.css'
 
 function App() {
-  const dispatch = useDispatch();
+  const [count, setCount] = useState(0)
 
-  useEffect(() => {
-    dispatch(fetchCategories());
-    dispatch(fetchSubcategories());
-  }, [dispatch]);
-
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <div>
+        <a href="https://vite.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+         
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.tsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+    </>
+  )
 }
 
-export default App;
+export default App
