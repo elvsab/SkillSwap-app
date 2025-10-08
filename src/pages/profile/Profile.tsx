@@ -1,20 +1,17 @@
+import clsx from "clsx";
+import styles from "./Profile.module.css";
 import { Outlet } from "react-router-dom";
+import { ProfileNav } from "./sections/profileNav";
 
 export const Profile = () => {
   return (
-    <div>
-      <h1>Profile Layout</h1>
-      <nav>
-        <a href="/profile/personal">Personal</a> | 
-        <a href="/profile/requests">Requests</a> | 
-        <a href="/profile/exchanges">Exchanges</a> | 
-        <a href="/profile/favorites">Favorites</a> | 
-        <a href="/profile/skills">Skills</a>
-      </nav>
-      <div>
+    <div className={styles.profile}>
+      <div className={clsx(styles.navWrapper)}>
+        <ProfileNav />
+      </div>
+      <div className={clsx(styles.contentWrapper)}>
         <Outlet />
       </div>
     </div>
   );
 };
-
