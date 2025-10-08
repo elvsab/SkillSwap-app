@@ -1,6 +1,6 @@
 import React from 'react';
 import cn from 'clsx';
-import { Input } from '../../../shared/ui/Input';
+import { Input } from '../../../shared/ui/input';
 import { Button } from '../../../shared/ui/button';
 import styles from './AuthForm.module.css';
 import type { AuthFormProps } from './types';
@@ -54,7 +54,7 @@ export const RegisterFormUI = ({
               type="email"
               placeholder={emailPlaceholder}
               value={email}
-              onChange={(e) => onEmailChange?.(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => onEmailChange?.(e.target.value)}
               name="email"
               autoComplete="email"
               disabled={isDisabled}
@@ -71,7 +71,7 @@ export const RegisterFormUI = ({
               type="password"
               placeholder={passwordPlaceholder}
               value={password}
-              onChange={(e) => onPasswordChange?.(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => onPasswordChange?.(e.target.value)}
               name="password"
               autoComplete={passwordAuto}
               disabled={isDisabled}

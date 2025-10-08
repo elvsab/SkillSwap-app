@@ -5,7 +5,7 @@ interface PrivateRouteProps {
   anonymous?: boolean;
 }
 
-export const PrivateRoute = ({ children, anonymous }: PrivateRouteProps) => {
+export const PrivateRoute = ({ children }: PrivateRouteProps) => {
   // TODO: Implement actual authentication logic
   // For now, just render children
   return <>{children}</>;

@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
 import './index.css'
 import App from './App.tsx'
-import store from './app/providers/store'
+import { store } from './app/providers/store'
 import { AuthProvider } from './app/providers/authProvider'
 
 createRoot(document.getElementById('root')!).render(

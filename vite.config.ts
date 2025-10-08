@@ -24,6 +24,11 @@ export default defineConfig({
       include: '**/*.svg',
     }),
   ],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
+  },
   test: {
     projects: [{
       extends: true,

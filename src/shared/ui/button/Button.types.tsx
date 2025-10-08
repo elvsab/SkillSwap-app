@@ -1,4 +1,4 @@
-import type { FunctionComponent, SVGProps } from "react";
+// Button types
 
 export interface ButtonProps {
   type?: "button" | "submit" | "reset";
