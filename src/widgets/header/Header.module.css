@@ -3,16 +3,41 @@
   width: 100%;
   padding: 36px 36px 20px 36px;
   background-color: var(--bg-color);
+  box-sizing: border-box;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 32px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 1200px) {
+  .header {
+    padding: 24px 24px 16px 24px;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 16px 16px 12px 16px;
+    gap: 8px;
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
 
 .nav {
   display: flex;
   gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .nav {
+    gap: 16px;
+    justify-content: center;
+  }
 }
 
 .link {
@@ -30,7 +55,16 @@
 }
 
 .input {
-  width: 527px;
+  flex: 1;
+  min-width: 200px;
+  max-width: 400px;
+}
+
+@media (max-width: 768px) {
+  .input {
+    max-width: 100%;
+    min-width: 100%;
+  }
 }
 
 .buttons {
@@ -42,6 +76,13 @@
   display: flex;
   align-items: center;
   gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .icons_user {
+    gap: 16px;
+    justify-content: center;
+  }
 }
 
 .profile {
