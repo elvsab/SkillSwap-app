@@ -1,29 +1,32 @@
-import { useState, useEffect } from "react";
-import type { ReactNode } from "react"; // ← добавили type-only импорт
+import type { ReactNode } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { AuthContext } from "./AuthContext";
+import { loginUser, logout } from "../../../features/auth/model/authSlice";
+import { selectIsAuthenticated } from "../../../features/auth/model/authSlice";
+import type { AppDispatch } from "../../../app/providers/store";
 
 type Props = { children: ReactNode };
 
 export const AuthProvider = ({ children }: Props) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const dispatch = useDispatch<AppDispatch>();
+  const isAuthenticated = useSelector(selectIsAuthenticated);
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    setIsAuthenticated(!!token);
-  }, []);
-
-  const login = () => {
-    localStorage.setItem("token", "token123");
-    setIsAuthenticated(true);
+  const handleLogin = (email: string, password: string) => {
+    dispatch(loginUser({ email, password }));
   };
 
-  const logout = () => {
-    localStorage.removeItem("token");
-    setIsAuthenticated(false);
+  const handleLogout = () => {
+    dispatch(logout());
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+    <AuthContext.Provider
+      value={{
+        isAuthenticated,
+        login: handleLogin,
+        logout: handleLogout,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
