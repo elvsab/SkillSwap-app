@@ -16,7 +16,7 @@ import { Skills } from "../../../pages/profile/sections/skillsPage";
 
 // Auth pages
 import { LoginPage } from "../../../pages/auth/LoginPage";
-import { PrivateRoute } from "../../../pages/auth/PrivateRoute";
+import { PrivateRoute } from "../../../shared/lib/routing/PrivateRoute";
 
 // Registration pages
 import { RegistrationStepOnePage } from "../../../pages/registration/RegistrationStepOnePage";
