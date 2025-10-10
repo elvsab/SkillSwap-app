@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { type FC } from 'react';
 import styles from './searchBar.module.scss';
 import type { SearchBarProps } from './types';
 import SearchIcon from '../../assets/icons/inputs/search.svg';

@@ -1,0 +1,123 @@
+/* Контейнер формы авторизации*/
+.auth-container {
+  display: grid;
+  box-sizing: border-box;
+  place-items: center;
+  min-width: 556px;
+  min-height: 692px;
+  border-radius: 12px;
+  background: var(--card-bg);
+  color: var(--font-color-primary);
+  padding: 32px 24px 24px;
+}
+
+/* Карточка формы */
+.auth-card {
+  display: flex;
+  inline-size: min(100%, 480px);
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-grid {
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.form-grid > * {
+  inline-size: 100%;
+}
+
+/* Стили для социальных кнопок */
+.social-auth {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  width: 100%;
+  justify-items: center;
+  align-items: stretch;
+}
+
+.social-btn {
+width: 100%;
+  max-width: 480px;
+  box-sizing: border-box;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  border-color: var(--font-color-secondary);
+}
+
+/* Поля формы */
+.auth-container__field {
+ display: grid;
+  gap: 8px;
+  min-width: 0;
+  margin-bottom: 8px; 
+}
+
+.auth-container__password-toggle:hover {
+  background: var(--bg-color);
+}
+
+.auth-container__password-toggle:disabled {
+  color: var(--font-color-secondary);
+  cursor: not-allowed;
+}
+
+/* Переключение между формами в футере */
+.auth-switch {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+  margin-top: 12px;
+  font-family: var(--font-family-main);
+}
+
+.auth-switch-btn {
+  background: transparent;
+  color: var(--font-color-link);
+  cursor: pointer;
+  padding: 0;
+  border: 0;
+  font: inherit;
+}
+
+/* Кнопка отправки формы */
+.auth-container__actions {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.auth-container__submit-button {
+  width: 100%;
+  max-width: 480px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  margin: 16px 0 0 0;
+}
+
+/* Разделитель "или" */
+.auth-container__separator {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 12px;
+  margin: 24px 0 1px;
+  font-family: var(--font-family-main);
+}
+
+.auth-container__separator > span:first-child,
+.auth-container__separator > span:last-child {
+  background: var(--button-color-disabled);
+  height: 1px;
+}
+
+.auth-switch-btn:hover {
+  text-decoration: underline;
+}

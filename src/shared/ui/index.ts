@@ -1,2 +1,3 @@
 export * from './Title';
-export * from './Input';
+export * from './input';
+export * from './SearchBar';

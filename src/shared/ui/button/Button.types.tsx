@@ -1,4 +1,4 @@
-import type { FunctionComponent, SVGProps } from "react";
+// Button types
 
 export interface ButtonProps {
   type?: "button" | "submit" | "reset";
@@ -19,4 +19,6 @@ export interface ButtonProps {
   /** Добавить класс из стилей */
   secondClass?: string;
   disabled?: boolean;
+  className?: string;
+  iconPosition?: 'left' | 'right'; 
 }

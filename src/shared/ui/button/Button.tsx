@@ -13,12 +13,25 @@ export const Button = ({
   icon,
   secondClass,
   disabled,
+  className,
+  iconPosition = 'right', // Пропс для позиционирования иконки
 }: ButtonProps) => {
+  const renderIcon = () => {
+    if (!icon) return null;
+    
+    if (typeof icon === "string") {
+      return <img src={icon} alt="" className={styles.icon} />;
+    } else {
+      const Icon = icon;
+      return <Icon className={styles.icon} />;
+    }
+  };
+
   return (
     <button
       type={type}
       disabled={disabled}
-      className={clsx(styles.button, secondClass && styles[secondClass])}
+      className={clsx(styles.button, secondClass && styles[secondClass], className)}
       style={{
         color: textColor,
         padding,
@@ -26,17 +39,9 @@ export const Button = ({
       }}
       onClick={onClick}
     >
+      {iconPosition === 'left' && !loading && renderIcon()}
       {loading ? "Загрузка..." : label}
-      {!loading &&
-        icon &&
-        (typeof icon === "string" ? (
-          <img src={icon} alt="" className={styles.icon} />
-        ) : (
-          (() => {
-            const Icon = icon; // 👈 сохранить компонент в переменную
-            return <Icon className={styles.icon} />;
-          })()
-        ))}
+      {iconPosition === 'right' && !loading && renderIcon()}
     </button>
   );
 };
