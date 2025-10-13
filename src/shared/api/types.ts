@@ -35,6 +35,19 @@ export type TUser = {
   skillExchanges?: string[];
 };
 
+export type TUserMain = {
+  id: string;
+  name: string;
+  dateOfBirth: string;
+  gender: "Мужской" | "Женский";
+  city: string;
+  avatar: string;
+  login: string;
+  password: string;
+  skillsCanTeach: Array<{ id: string; title: string }>;
+  skillsWantsToLearn: Array<{ id: string; title: string }>;
+};
+
 type TSuccessResponse<T> = {
   success: true;
   data: T;

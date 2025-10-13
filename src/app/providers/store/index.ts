@@ -1,14 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
 // TODO: Re-enable slices once TypeScript module resolution is fixed
-// import { filtersReducer } from '../../features/filters/model/filtersSlice'
-// import { skillsReducer } from '../../entities/skills/model/skillsSlice'
 import { authReducer } from "../../../features/auth/model/authSlice";
+import { skillsReducer } from "../../../entities/skills/model/skillsSlice";
+import { filtersReducer } from "../../../features/filters/model/filtersSlice";
+import { usersReducer } from "../../../entities/users/model/usersSlice";
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
-    // filters: filtersReducer,
-    // skills: skillsReducer,
+    skills: skillsReducer,
+    filters: filtersReducer,
+    users: usersReducer,
   },
 });
 

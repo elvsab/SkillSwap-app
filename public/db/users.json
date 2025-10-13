@@ -1,0 +1,334 @@
+[
+  {
+    "id": "1",
+    "name": "Иван",
+    "dateOfBirth": "1991-06-08",
+    "gender": "Мужской",
+    "city": "Санкт-Петербург",
+    "avatar": "https://example.com/avatar1.png",
+    "login": "user1@mail.ru",
+    "password": "Password1",
+    "skillsCanTeach": [
+        { "id": "101", "title": "Управление командой" },
+        { "id": "102", "title": "Маркетинг и реклама" }
+    ],
+    "skillsWantsToLearn": [
+        { "id": "205", "title": "Китайский" }
+    ]
+  },
+  {
+    "id": "2",
+    "name": "Анна",
+    "dateOfBirth": "1995-03-12",
+    "gender": "Женский",
+    "city": "Москва",
+    "avatar": "https://example.com/avatar2.png",
+    "login": "user2@mail.ru",
+    "password": "Password2",
+    "skillsCanTeach": [
+        { "id": "303", "title": "Приготовление еды" },
+        { "id": "205", "title": "Китайский" }
+    ],
+    "skillsWantsToLearn": [
+        { "id": "404", "title": "Музыка и звук" },
+        { "id": "202", "title": "Французский" }
+    ]
+  },
+  {
+    "id": "3",
+    "name": "Максим",
+    "dateOfBirth": "1988-11-25",
+    "gender": "Мужской",
+    "city": "Казань",
+    "avatar": "https://example.com/avatar3.png",
+    "login": "user3@mail.ru",
+    "password": "Password3",
+    "skillsCanTeach": [
+        { "id": "106", "title": "Тайм-менеджмент" },
+        { "id": "607", "title": "Баланс жизни и работы" }
+    ],
+    "skillsWantsToLearn": [
+        { "id": "201", "title": "Английский" },
+        { "id": "203", "title": "Испанский" },
+        { "id": "303", "title": "Приготовление еды" }
+    ]
+  },
+  {
+    "id": "4",
+    "name": "Илона",
+    "dateOfBirth": "1993-07-19",
+    "gender": "Женский",
+    "city": "Новосибирск",
+    "avatar": "https://example.com/avatar4.png",
+    "login": "user4@mail.ru",
+    "password": "Password4",
+    "skillsCanTeach": [
+        { "id": "107", "title": "Проектное управление" }
+    ],
+    "skillsWantsToLearn": [
+        { "id": "206", "title": "Японский" }
+    ]
+  },
+  {
+    "id": "5",
+    "name": "Михаил",
+    "dateOfBirth": "1987-02-14",
+    "gender": "Мужской",
+    "city": "Екатеринбург",
+    "avatar": "https://example.com/avatar5.png",
+    "login": "user5@mail.ru",
+    "password": "Password5",
+    "skillsCanTeach": [
+        { "id": "105", "title": "Резюме и собеседование" }
+    ],
+    "skillsWantsToLearn": [
+        { "id": "202", "title": "Французский" },
+        { "id": "404", "title": "Музыка и звук" }
+    ]
+  },
+  {
+    "id": "6",
+    "name": "Мария",
+    "dateOfBirth": "1996-10-30",
+    "gender": "Женский",
+    "city": "Казань",
+    "avatar": "https://example.com/avatar6.png",
+    "login": "user6@mail.ru",
+    "password": "Password6",
+    "skillsCanTeach": [
+        { "id": "102", "title": "Маркетинг и реклама" }
+    ],
+    "skillsWantsToLearn": [
+        { "id": "201", "title": "Английский" },
+        { "id": "206", "title": "Японский" }
+    ]
+  },
+  {
+    "id": "7",
+    "name": "Константин",
+    "dateOfBirth": "1992-04-11",
+    "gender": "Мужской",
+    "city": "Москва",
+    "avatar": "https://example.com/avatar7.png",
+    "login": "user7@mail.ru",
+    "password": "Password7",
+    "skillsCanTeach": [
+        { "id": "108", "title": "Предпринимательство" }
+    ],
+    "skillsWantsToLearn": [
+        { "id": "205", "title": "Китайский" }
+    ]
+  },
+  {
+    "id": "8",
+    "name": "София",
+    "dateOfBirth": "1998-09-09",
+    "gender": "Женский",
+    "city": "Сочи",
+    "avatar": "https://example.com/avatar8.png",
+    "login": "user8@mail.ru",
+    "password": "Password8",
+    "skillsCanTeach": [
+        { "id": "303", "title": "Приготовление еды" }
+    ],
+    "skillsWantsToLearn": [
+        { "id": "7", "title": "Подготовка к экзаменам (IELTS, TOEFL)" }
+    ]
+  },
+  {
+    "id": "9",
+    "name": "Сергей",
+    "dateOfBirth": "1990-05-05",
+    "gender": "Мужской",
+    "city": "Красноярск",
+    "avatar": "https://example.com/avatar9.png",
+    "login": "user9@mail.ru",
+    "password": "Password9",
+    "skillsCanTeach": [
+        { "id": "101", "title": "Управление командой" }
+    ],
+    "skillsWantsToLearn": [
+        { "id": "202", "title": "Французский" },
+        { "id": "607", "title": "Баланс жизни и работы" }
+    ]
+  },
+  {
+    "id": "10",
+    "name": "Алла",
+    "dateOfBirth": "1994-08-21",
+    "gender": "Женский",
+    "city": "Иркутск",
+    "avatar": "https://example.com/avatar10.png",
+    "login": "user10@mail.ru",
+    "password": "Password10",
+    "skillsCanTeach": [
+        { "id": "404", "title": "Музыка и звук" }
+    ],
+    "skillsWantsToLearn": [
+        { "id": "206", "title": "Японский" },
+        { "id": "203", "title": "Испанский" }
+    ]
+  },
+  {
+    "id": "11",
+    "name": "София",
+    "dateOfBirth": "1989-01-15",
+    "gender": "Женский",
+    "city": "Абакан",
+    "avatar": "https://example.com/avatar11.png",
+    "login": "user11@mail.ru",
+    "password": "Password11",
+    "skillsCanTeach": [
+        { "id": "107", "title": "Проектное управление" }
+    ],
+    "skillsWantsToLearn": [
+        { "id": "201", "title": "Английский" }
+    ]
+  },
+  {
+    "id": "12",
+    "name": "Татьяна",
+    "dateOfBirth": "1997-06-18",
+    "gender": "Женский",
+    "city": "Кемерово",
+    "avatar": "https://example.com/avatar12.png",
+    "login": "user12@mail.ru",
+    "password": "Password12",
+    "skillsCanTeach": [
+        { "id": "108", "title": "Предпринимательство" }
+    ],
+    "skillsWantsToLearn": [
+        { "id": "205", "title": "Китайский" }
+    ]
+  },
+  {
+    "id": "13",
+    "name": "Виктория",
+    "dateOfBirth": "1986-12-03",
+    "gender": "Женский",
+    "city": "Пермь",
+    "avatar": "https://example.com/avatar13.png",
+    "login": "user13@mail.ru",
+    "password": "Password13",
+    "skillsCanTeach": [
+        { "id": "106", "title": "Тайм-менеджмент" }
+    ],
+    "skillsWantsToLearn": [
+        { "id": "404", "title": "Музыка и звук" }
+    ]
+  },
+  {
+    "id": "14",
+    "name": "Екатерина",
+    "dateOfBirth": "1999-07-27",
+    "gender": "Женский",
+    "city": "Ярославль",
+    "avatar": "https://example.com/avatar14.png",
+    "login": "user14@mail.ru",
+    "password": "Password14",
+    "skillsCanTeach": [
+        { "id": "102", "title": "Маркетинг и реклама" }
+    ],
+    "skillsWantsToLearn": [
+        { "id": "203", "title": "Испанский" }
+    ]
+  },
+  {
+    "id": "15",
+    "name": "Елена",
+    "dateOfBirth": "1985-11-09",
+    "gender": "Женский",
+    "city": "Архангельск",
+    "avatar": "https://example.com/avatar15.png",
+    "login": "user15@mail.ru",
+    "password": "Password15",
+    "skillsCanTeach": [
+        { "id": "105", "title": "Резюме и собеседование" }
+    ],
+    "skillsWantsToLearn": [
+        { "id": "206", "title": "Японский" }
+    ]
+  },
+  {
+    "id": "16",
+    "name": "Алина",
+    "dateOfBirth": "1993-02-23",
+    "gender": "Женский",
+    "city": "Рязань",
+    "avatar": "https://example.com/avatar16.png",
+    "login": "user16@mail.ru",
+    "password": "Password16",
+    "skillsCanTeach": [
+        { "id": "101", "title": "Управление командой" }
+    ],
+    "skillsWantsToLearn": [
+        { "id": "7", "title": "Подготовка к экзаменам (IELTS, TOEFL)" }
+    ]
+  },
+  {
+    "id": "17",
+    "name": "Анна",
+    "dateOfBirth": "1992-09-17",
+    "gender": "Женский",
+    "city": "Москва",
+    "avatar": "https://example.com/avatar17.png",
+    "login": "user17@mail.ru",
+    "password": "Password17",
+    "skillsCanTeach": [
+        { "id": "107", "title": "Проектное управление" }
+    ],
+    "skillsWantsToLearn": [
+        { "id": "202", "title": "Французский" }
+    ]
+  },
+  {
+    "id": "18",
+    "name": "Ксения",
+    "dateOfBirth": "1996-04-29",
+    "gender": "Женский",
+    "city": "Санкт-Петербург",
+    "avatar": "https://example.com/avatar18.png",
+    "login": "user18@mail.ru",
+    "password": "Password18",
+    "skillsCanTeach": [
+        { "id": "303", "title": "Приготовление еды" }
+    ],
+    "skillsWantsToLearn": [
+        { "id": "206", "title": "Японский" },
+        { "id": "201", "title": "Английский" }
+    ]
+  },
+  {
+    "id": "19",
+    "name": "Игорь",
+    "dateOfBirth": "1989-08-02",
+    "gender": "Мужской",
+    "city": "Новосибирск",
+    "avatar": "https://example.com/avatar19.png",
+    "login": "user19@mail.ru",
+    "password": "Password19",
+    "skillsCanTeach": [
+        { "id": "404", "title": "Музыка и звук" }
+    ],
+    "skillsWantsToLearn": [
+        { "id": "205", "title": "Китайский" }
+    ]
+  },
+  {
+    "id": "20",
+    "name": "Юлия",
+    "dateOfBirth": "1997-12-13",
+    "gender": "Женский",
+    "city": "Москва",
+    "avatar": "https://example.com/avatar20.png",
+    "login": "user20@mail.ru",
+    "password": "Password20",
+    "skillsCanTeach": [
+        { "id": "106", "title": "Тайм-менеджмент" }
+    ],
+    "skillsWantsToLearn": [
+        { "id": "203", "title": "Испанский" },
+        { "id": "207", "title": "Подготовка к экзаменам (IELTS, TOEFL)" }
+    ]
+  }
+]
