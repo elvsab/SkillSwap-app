@@ -1,0 +1,87 @@
+.skills__modal {
+  position: absolute;
+  z-index: 1000;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  max-height: 80vh;
+  padding: 40px 32px;
+  border: 1px solid var(--font-color-secondary);
+  border-radius: 16px;
+  max-width: 1136px;
+  background-color: var(--card-bg, #fff);
+  overflow-y: auto;
+  box-shadow: 0 8px 24px rgba(2, 6, 23, 0.12);
+  transition: opacity 0.2s ease-in-out;
+}
+
+.skills__modal-item {
+  display: flex;
+  column-gap: 12px;
+  align-items: flex-start;
+  padding-left: 12px;
+  min-height: 120px;
+}
+
+.icon-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.icon-letter {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.skills__modal-item-text {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}
+
+.item-title {
+  font-family: var(--font-family-title, "Inter", system-ui);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--font-color-primary);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.item-subs {
+  display: flex;
+  flex-direction: column;
+  row-gap: 6px;
+  font-family: var(--font-family-text, "Inter", system-ui);
+  font-size: 14px;
+  color: var(--font-color-secondary);
+}
+
+.sub-item {
+  margin: 0;
+  transition: color 0.2s;
+}
+
+.sub-item:hover {
+  color: var(--font-color-primary);
+}
+
+@media (max-width: 1024px) {
+  .skills__modal {
+    left: 16px !important;
+    max-width: calc(100% - 32px) !important;
+    grid-template-columns: 1fr;
+    padding: 24px 20px;
+    max-height: 70vh;
+  }
+
+  .skills__modal-item {
+    min-height: auto;
+  }
+}
