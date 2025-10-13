@@ -6,7 +6,8 @@ import styles from "./Modal.module.scss";
 
 const modalRoot = document.getElementById("modals") || document.body;
 
-export const Modal: FC<ModalProps> = memo(({ isOpen, onClose, children }) => {
+export const Modal: FC<ModalProps & { noOverlay?: boolean; className?: string }> = memo(
+  ({ isOpen, onClose, children, noOverlay = false, className }) => {
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -14,25 +15,32 @@ export const Modal: FC<ModalProps> = memo(({ isOpen, onClose, children }) => {
       }
     };
 
-    if (isOpen) {
-      document.addEventListener("keydown", handleEsc);
-      document.body.style.overflow = "hidden";
-    }
+    if (isOpen && !noOverlay) {
+        document.addEventListener("keydown", handleEsc);
+        document.body.style.overflow = "hidden";
+      } else if (isOpen && noOverlay) {
+        document.addEventListener("keydown", handleEsc);
+      }
     return () => {
       document.removeEventListener("keydown", handleEsc);
-      document.body.style.overflow = "";
+      if (!noOverlay) document.body.style.overflow = "";
     };
-  }, [isOpen, onClose]);
+  }, [isOpen, onClose, noOverlay]);
 
   if (!isOpen) return null;
 
   return createPortal(
     <>
-      <div className={styles.modal}>
-        <div className={styles.content}>{children}</div>
-      </div>
-      <ModalOverlay onClick={onClose} />
+      <div
+          className={`${styles.modal} ${noOverlay ? styles['noOverlay'] : ""} ${className ?? ""}`}
+        >
+          <div className={styles.content}>{children}</div>
+        </div>
+
+        {/* рендер overlay только если не выключен */}
+        {!noOverlay && <ModalOverlay onClick={onClose} />}
     </>,
     modalRoot as HTMLDivElement
   );
 });
+export default Modal;

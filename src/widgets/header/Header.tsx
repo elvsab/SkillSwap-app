@@ -13,6 +13,7 @@ import HeartIcon from "../../shared/assets/icons/actions/like.svg";
 import CrossIcon from "../../shared/assets/icons/ui/cross.svg";
 import chevronDownIcon from "../../shared/assets/icons/ui/chevron-down.svg";
 import Avatar from "../../shared/assets/icons/profile/user.svg";
+import { SkillsList } from "@/shared/ui/SkillsList";
 
 type HeaderVariant = "guest" | "user" | "auth";
 
@@ -28,6 +29,16 @@ export const Header = ({ variant, name }: HeaderProps) => {
 
   // TODO: Use debouncedSearchQuery when Redux search slice is implemented
   console.log("Debounced search query:", debouncedSearchQuery);
+
+  const [isSkillsOpen, setIsSkillsOpen] = useState(false);
+
+  const toggleSkills = () => setIsSkillsOpen((s) => !s);
+  const closeSkills = () => setIsSkillsOpen(false);
+
+  const handleLogoClick = () => {
+    navigate("/");
+    closeSkills();
+  };
 
   // Handle theme toggle
   const handleThemeToggle = () => {
@@ -66,14 +77,12 @@ export const Header = ({ variant, name }: HeaderProps) => {
     navigate(-1); // Go back to previous page
   };
 
-  // Handle logo click
-  const handleLogoClick = () => {
-    navigate("/");
-  };
-
   return (
     <header className={styles.header}>
-      <button onClick={handleLogoClick} style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
+      <button
+        onClick={handleLogoClick}
+        style={{ background: "none", border: "none", cursor: "pointer" }}
+      >
         <Logo />
       </button>
 
@@ -83,23 +92,31 @@ export const Header = ({ variant, name }: HeaderProps) => {
             <Link className={clsx(styles.link)} to="/about">
               <Button label="О проекте" />
             </Link>
-            <Link className={clsx(styles.link)} to="/">
-              <Button label="Навыки" icon={chevronDownIcon} />
-            </Link>
+
+            <Button
+              label="Навыки"
+              icon={chevronDownIcon}
+              onClick={toggleSkills}
+              className={clsx(styles.link, styles.skillsToggle)}
+              aria-haspopup="dialog"
+              aria-expanded={isSkillsOpen}
+              aria-controls="skills-list"
+            />
           </nav>
           <div className={styles.input}>
-            <SearchBar 
+            <SearchBar
               searchText={searchQuery}
               onSearchChange={setSearchQuery}
             />
           </div>
+          <SkillsList isOpen={isSkillsOpen} onClose={closeSkills} />
         </>
       )}
 
       {variant === "guest" && (
-        <button 
+        <button
           onClick={handleThemeToggle}
-          style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+          style={{ background: "none", border: "none", cursor: "pointer" }}
           aria-label="Toggle theme"
         >
           <IconWrapper
@@ -114,15 +131,19 @@ export const Header = ({ variant, name }: HeaderProps) => {
       {variant === "guest" && (
         <div className={styles.buttons}>
           <Button label="Войти" secondClass="secondary" onClick={handleLogin} />
-          <Button label="Зарегистрироваться" secondClass="primary" onClick={handleRegistration} />
+          <Button
+            label="Зарегистрироваться"
+            secondClass="primary"
+            onClick={handleRegistration}
+          />
         </div>
       )}
 
       {variant === "user" && (
         <div className={styles.icons_user}>
-          <button 
+          <button
             onClick={handleThemeToggle}
-            style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+            style={{ background: "none", border: "none", cursor: "pointer" }}
             aria-label="Toggle theme"
           >
             <IconWrapper
@@ -132,9 +153,9 @@ export const Header = ({ variant, name }: HeaderProps) => {
               ariaLabel="ThemeIcon"
             />
           </button>
-          <button 
+          <button
             onClick={handleNotifications}
-            style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+            style={{ background: "none", border: "none", cursor: "pointer" }}
             aria-label="Notifications"
           >
             <IconWrapper
@@ -144,9 +165,9 @@ export const Header = ({ variant, name }: HeaderProps) => {
               ariaLabel="NotificationIcon"
             />
           </button>
-          <button 
+          <button
             onClick={handleFavorites}
-            style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+            style={{ background: "none", border: "none", cursor: "pointer" }}
             aria-label="Favorites"
           >
             <IconWrapper
@@ -156,10 +177,10 @@ export const Header = ({ variant, name }: HeaderProps) => {
               ariaLabel="HeartIcon"
             />
           </button>
-          <button 
+          <button
             onClick={handleProfile}
             className={styles.profile}
-            style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+            style={{ background: "none", border: "none", cursor: "pointer" }}
             aria-label="Profile"
           >
             <span className={styles.profile_name}>{name}</span>
@@ -174,7 +195,12 @@ export const Header = ({ variant, name }: HeaderProps) => {
       )}
 
       {variant === "auth" && (
-        <Button label="Закрыть" icon={CrossIcon} secondClass="tertiary" onClick={handleClose} />
+        <Button
+          label="Закрыть"
+          icon={CrossIcon}
+          secondClass="tertiary"
+          onClick={handleClose}
+        />
       )}
     </header>
   );
