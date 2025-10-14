@@ -1,27 +1,36 @@
-import { Catalog } from "../pages/catalog/Catalog";
+import { Catalog } from "../shared/ui/catalog/Catalog";
 import { FilterPanel } from "../widgets/filterPanel/filterPanel";
-import { Header } from "../widgets/header/Header";
-import { Footer } from "../widgets/footer/Footer";
 import styles from "./MainPage.module.scss";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useDebounce } from "../shared/hooks/useDebounce";
+import { useSelector } from "react-redux";
+import {
+  selectCity,
+  selectGender,
+  selectMode,
+  selectSkillIds,
+  selectSearchQuery
+} from "../features/filters/model/filtersSlice";
 
 export const MainPage = () => {
-  const [searchText, setSearchText] = useState('');
-  const debouncesSearchText = useDebounce(searchText, 300);
 
-  const handleSearchChange = (value: string) => {
-    setSearchText(value);
-  };
+  const role = useSelector(selectMode);
+  const gender = useSelector(selectGender);
+  const cities = useSelector(selectCity);
+  const skills = useSelector(selectSkillIds);
+  const searchQuery = useSelector(selectSearchQuery);
+  const debouncedSearchText = useDebounce(searchQuery, 300);
+
+  const combinedFilters = useMemo(() => ({
+    searchText: debouncedSearchText,
+    role,
+    gender,
+    cities,
+    skills
+  }), [debouncedSearchText, role, gender, cities, skills]);
 
   return (
     <div className={styles.page}>
-      <Header 
-        variant="guest" 
-        name="" 
-        searchText={searchText}
-        onSearchChange={handleSearchChange}
-      />
       <div className={styles.mainWrapper}>
         <div className={styles.mainContent}>
           <aside className={styles.sidebar}>
@@ -29,13 +38,10 @@ export const MainPage = () => {
           </aside>
           
           <div className={styles.content}>
-            <Catalog searchText={debouncesSearchText} />
+            <Catalog filters={combinedFilters} />
           </div>
         </div>
       </div>
-      
-      <Footer />
     </div>
   );
 };
-

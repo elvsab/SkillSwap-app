@@ -14,24 +14,21 @@ import CrossIcon from "../../shared/assets/icons/ui/cross.svg";
 import chevronDownIcon from "../../shared/assets/icons/ui/chevron-down.svg";
 import Avatar from "../../shared/assets/icons/profile/user.svg";
 import { SkillsList } from "@/shared/ui/SkillsList";
-import { SearchBar } from "../../shared/ui/SearchBar";
+import { useDispatch } from "react-redux";
+import { filtersActions } from "../../features/filters/model/filtersSlice";
 
 type HeaderVariant = "guest" | "user" | "auth";
 
 export interface HeaderProps {
   variant: HeaderVariant;
   name: string;
-  searchText?: string;
-  onSearchChange?: (value: string) => void;
+  searchText: string;
+  onSearchChange: (value: string) => void;
 }
 
-export const Header = ({ variant, name }: HeaderProps) => {
+export const Header = ({ variant, name, searchText, onSearchChange }: HeaderProps) => {
   const navigate = useNavigate();
-  const [searchQuery, setSearchQuery] = useState("");
-  const debouncedSearchQuery = useDebounce(searchQuery, 300);
-
-  // TODO: Use debouncedSearchQuery when Redux search slice is implemented
-  console.log("Debounced search query:", debouncedSearchQuery);
+  const dispatch = useDispatch();
 
   const [isSkillsOpen, setIsSkillsOpen] = useState(false);
 
@@ -80,6 +77,11 @@ export const Header = ({ variant, name }: HeaderProps) => {
     navigate(-1); // Go back to previous page
   };
 
+  const handleSearchChange = (value: string) => {
+    onSearchChange(value);
+    dispatch(filtersActions.setSearchQuery(value));
+  };
+
   return (
     <header className={styles.header}>
       <button
@@ -108,8 +110,8 @@ export const Header = ({ variant, name }: HeaderProps) => {
           </nav>
           <div className={styles.input}>
             <SearchBar
-              searchText={searchQuery}
-              onSearchChange={setSearchQuery}
+              searchText={searchText}
+              onSearchChange={handleSearchChange}
             />
           </div>
           <SkillsList isOpen={isSkillsOpen} onClose={closeSkills} />
