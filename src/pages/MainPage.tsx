@@ -34,18 +34,17 @@ const initialState: PaginationState = {
 
 function paginationReducer(state: PaginationState, action: PaginationAction): PaginationState {
   switch (action.type) {
-    case 'SHOW_MORE': {
+    case 'SHOW_MORE':
       const nextPage = state.currentPage + 1;
       const allUsers = mockData.users as User[];
       const newDisplayCount = nextPage * USERS_PER_PAGE;
       const newDisplayedUsers = allUsers.slice(0, newDisplayCount);
-
+      
       return {
         displayedUsers: newDisplayedUsers,
         currentPage: nextPage,
         hasMore: newDisplayCount < allUsers.length
       };
-    }
 
     case 'RESET':
       return {

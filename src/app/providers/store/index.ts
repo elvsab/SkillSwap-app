@@ -4,6 +4,7 @@ import { authReducer } from "../../../features/auth/model/authSlice";
 import { skillsReducer } from "../../../entities/skills/model/skillsSlice";
 import { filtersReducer } from "../../../features/filters/model/filtersSlice";
 import { usersReducer } from "../../../entities/users/model/usersSlice";
+import { favoritesReducer } from '../../../features/favorites/model/favoritesSlice';
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
     skills: skillsReducer,
     filters: filtersReducer,
     users: usersReducer,
+    favorites: favoritesReducer,
   },
 });
 
