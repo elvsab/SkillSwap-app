@@ -5,7 +5,6 @@ import { Button } from "../../shared/ui/button";
 import { SearchBar } from "../../shared/ui/index";
 import { IconWrapper } from "../../shared/ui/iconWrapper";
 import { Link, useNavigate } from "react-router-dom";
-import { useDebounce } from "../../shared/hooks";
 import { useState } from "react";
 import ThemeIcon from "../../shared/assets/icons/ui/moon.svg";
 import NotificationIcon from "../../shared/assets/icons/notifications/notification.svg";

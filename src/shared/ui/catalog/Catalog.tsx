@@ -1,4 +1,4 @@
-import { FC, useMemo, useState } from 'react';
+import {type FC, useMemo, useState } from 'react';
 import { Feed } from '../Feed/Feed';
 import mockData from '../../../api/mockData.json';
 import type { User } from '../SkillCard/types';
@@ -16,6 +16,7 @@ interface CatalogProps {
     cities: string[];
     skills: string[];
   };
+  users: User[];
 }
 
 export const Catalog: FC<CatalogProps> = ({ filters = {
@@ -45,6 +46,7 @@ export const Catalog: FC<CatalogProps> = ({ filters = {
     );
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const filterCardsByOtherFilters = (cards: User[], filters: any): User[] => {
     let filtered = cards;
 
