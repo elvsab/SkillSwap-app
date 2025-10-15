@@ -1,0 +1,61 @@
+@import '../app/styles/colors.scss';
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  overflow-x: hidden;
+}
+
+.mainWrapper {
+  flex: 1;
+  width: 100%;
+  overflow: hidden;
+}
+
+.mainContent {
+  display: flex;
+  margin: 0;
+  padding: 20px;
+  gap: 30px;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 324px;
+  flex-shrink: 0;
+  height: fit-content;
+  position: sticky;
+  top: 20px;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+// Адаптивность для мобильных
+@media (max-width: 1024px) {
+  .mainContent {
+    flex-direction: column;
+    gap: 20px;
+    padding: 16px;
+  }
+  
+  .sidebar {
+    width: 100%;
+    position: static;
+  }
+  
+  .content {
+    min-width: 100%;
+  }
+}

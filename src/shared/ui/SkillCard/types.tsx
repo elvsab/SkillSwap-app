@@ -2,13 +2,15 @@ export type User = {
     id: string;
     name: string;
     dateOfBirth: string;
-    gender: 'Мужской' | 'Женский';
+    gender: 'Мужской' | 'Женский' | string;
     city: string;
     avatar: string;
     login: string;
     password: string;
     skillsCanTeach: Skill[];
     skillsWantsToLearn: Skill[];
+    isNew: boolean;
+    isPopular: boolean;
 };
 
 export type UserCardProps = {

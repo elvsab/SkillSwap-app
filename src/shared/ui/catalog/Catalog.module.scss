@@ -1,0 +1,25 @@
+.catalog {
+  width: 100%;
+  min-height: 0;
+  flex: 1;
+  overflow: hidden;
+}
+
+.categoryHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 36px;
+  width: 100%;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.feedContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
