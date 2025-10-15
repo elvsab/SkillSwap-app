@@ -64,7 +64,7 @@ export const Catalog: FC<CatalogProps> = ({ filters = {
 
     if (filters.cities.length > 0) {
       filtered = filtered.filter(card => 
-        filters.cities.some(city => 
+        filters.cities.some((city: string) => 
           card.city.toLowerCase().includes(city.toLowerCase())
         )
       );

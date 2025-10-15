@@ -1,5 +1,5 @@
-import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { favoritesApi, type FavoriteItem, type FavoritesData } from "../../../api/favorites-api";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { favoritesApi, type FavoriteItem } from "../../../api/favorites-api";
 import type { RootState } from "../../../app/providers/store";
 
 export interface FavoritesState {
