@@ -4,6 +4,7 @@
   align-items: center;
   min-height: 100vh;
   background-color: var(--bg-color);
+  padding: 0 16px;
 }
 
 .title {
@@ -22,20 +23,21 @@
   align-items: stretch;
   gap: 24px;
   width: 100%;
+  max-width: 1200px;
+  flex-wrap: wrap;
 }
 
-.formBlock {
-  flex: 1;
-  max-width: 556px;
-  padding: 112px 60px;
+.formBlock,
+.imageBlock {
+  width: 556px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  padding: 64px 0px;
   background-color: var(--card-bg);
+  border-radius: 16px;
 }
 
 .imageBlock {
-  flex: 1;
-  max-width: 556px;
-  padding: 132px 60px;
-  background-color: var(--card-bg);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -75,4 +77,23 @@
   color: var(--error-color);
   text-align: center;
   margin-top: 12px;
+}
+
+@media (max-width: 1024px) {
+  .content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .formBlock,
+  .imageBlock {
+    max-width: 100%;
+    max-width: 556px;
+    padding: 48px 24px;
+  }
+
+  .image {
+    width: 200px;
+    height: 200px;
+  }
 }

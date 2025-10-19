@@ -1,13 +1,14 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { LoginFormUI } from "../../features/auth/ui/LoginForm";
+import { LoginForm } from "../../features/auth/ui/LoginForm/LoginForm";
 import {
   selectAuthError,
   selectAuthLoading,
 } from "../../features/auth/model/authSlice";
 import styles from "./LoginPage.module.css";
 import { useAuth } from "@/app/providers/authProvider/useAuth";
+import { Loader } from "@/shared/ui/loader/loader"; 
 
 export const LoginPage = () => {
   const navigate = useNavigate();
@@ -15,31 +16,25 @@ export const LoginPage = () => {
   const loading = useSelector(selectAuthLoading);
   const error = useSelector(selectAuthError);
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
-
   useEffect(() => {
     if (isAuthenticated) navigate("/profile");
   }, [isAuthenticated, navigate]);
 
-  const handleSubmit = () => {
-    setEmailError("");
-    setPasswordError("");
-    let valid = true;
-
-    if (!email) {
-      setEmailError("Введите email");
-      valid = false;
-    }
-    if (!password) {
-      setPasswordError("Введите пароль");
-      valid = false;
-    }
-
-    if (valid) login(email, password);
+  const handleFormSubmit = (data: { email: string; password: string }) => {
+    login(data.email, data.password);
   };
+
+  const handleSwitchToRegister = () => {
+    navigate("/registration/step1");
+  };
+
+  if (loading) {
+    return (
+      <div className={styles.loaderWrapper}>
+        <Loader />
+      </div>
+    );
+  }
 
   return (
     <div className={styles.wrapper}>
@@ -49,19 +44,11 @@ export const LoginPage = () => {
         <div className={styles.formBlock}>
           <div className="auth-container">
             <div className="auth-card">
-              <LoginFormUI
-                email={email}
-                password={password}
-                onEmailChange={setEmail}
-                onPasswordChange={setPassword}
-                emailErrorMessage={emailError}
-                passwordErrorMessage={passwordError}
-                loading={loading}
-                onSubmit={handleSubmit}
-                footerContent={
-                  error && <div className={styles.errorWrapper}>{error}</div>
-                }
+              <LoginForm
+                onSubmit={handleFormSubmit}
+                onSwitchToRegister={handleSwitchToRegister}
               />
+              {error && <div className={styles.errorWrapper}>{error}</div>}
             </div>
           </div>
         </div>
