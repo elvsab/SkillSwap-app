@@ -1,0 +1,78 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+}
+
+.title {
+  text-align: center;
+  font-family: var(--font-family-header);
+  font-weight: var(--font-weight-header);
+  font-size: var(--font-size-header-m);
+  line-height: var(--font-line-height-header-s);
+  color: var(--font-color-primary);
+  margin: 48px 0 32px;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 24px;
+  width: 100%;
+}
+
+.formBlock {
+  flex: 1;
+  max-width: 556px;
+  padding: 112px 60px;
+  background-color: var(--card-bg);
+}
+
+.imageBlock {
+  flex: 1;
+  max-width: 556px;
+  padding: 132px 60px;
+  background-color: var(--card-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.image {
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+}
+
+.imageTitle {
+  font-family: var(--font-family-header);
+  font-weight: var(--font-weight-header);
+  font-size: var(--font-size-header-m);
+  line-height: var(--font-line-height-header-m);
+  color: var(--font-color-primary);
+  margin-top: 40px;
+  margin-bottom: 12px;
+}
+
+.imageText {
+  font-family: var(--font-family-main);
+  font-weight: var(--font-weight-main);
+  font-size: var(--font-size-main);
+  line-height: var(--font-line-height-main);
+  color: var(--font-color-secondary);
+  max-width: 436px;
+}
+
+.errorWrapper {
+  font-family: var(--font-family-caption);
+  font-weight: var(--font-weight-caption);
+  font-size: var(--font-size-caption);
+  line-height: var(--font-line-height-caption);
+  color: var(--error-color);
+  text-align: center;
+  margin-top: 12px;
+}
