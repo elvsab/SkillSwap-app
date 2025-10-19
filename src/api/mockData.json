@@ -6,7 +6,7 @@
         "dateOfBirth": "1991-06-08",
         "gender": "Мужской",
         "city": "Санкт-Петербург",
-        "avatar": "https://example.com/avatar1.png",
+        "avatar": "https://randomuser.me/api/portraits/men/32.jpg",
         "login": "user1@mail.ru",
         "password": "Password1",
         "skillsCanTeach": [
@@ -25,7 +25,7 @@
         "dateOfBirth": "1995-03-12",
         "gender": "Женский",
         "city": "Москва",
-        "avatar": "https://example.com/avatar2.png",
+        "avatar": "https://randomuser.me/api/portraits/women/4.jpg",
         "login": "user2@mail.ru",
         "password": "Password2",
         "skillsCanTeach": [
@@ -45,7 +45,7 @@
         "dateOfBirth": "1988-11-25",
         "gender": "Мужской",
         "city": "Казань",
-        "avatar": "https://example.com/avatar3.png",
+        "avatar": "https://randomuser.me/api/portraits/men/75.jpg",
         "login": "user3@mail.ru",
         "password": "Password3",
         "skillsCanTeach": [
@@ -66,7 +66,7 @@
         "dateOfBirth": "1993-07-19",
         "gender": "Женский",
         "city": "Новосибирск",
-        "avatar": "https://example.com/avatar4.png",
+        "avatar": "https://randomuser.me/api/portraits/women/34.jpg",
         "login": "user4@mail.ru",
         "password": "Password4",
         "skillsCanTeach": [
@@ -84,7 +84,7 @@
         "dateOfBirth": "1987-02-14",
         "gender": "Мужской",
         "city": "Екатеринбург",
-        "avatar": "https://example.com/avatar5.png",
+        "avatar": "https://randomuser.me/api/portraits/men/27.jpg",
         "login": "user5@mail.ru",
         "password": "Password5",
         "skillsCanTeach": [
@@ -103,7 +103,7 @@
         "dateOfBirth": "1996-10-30",
         "gender": "Женский",
         "city": "Казань",
-        "avatar": "https://example.com/avatar6.png",
+        "avatar": "https://randomuser.me/api/portraits/women/11.jpg",
         "login": "user6@mail.ru",
         "password": "Password6",
         "skillsCanTeach": [
@@ -122,7 +122,7 @@
         "dateOfBirth": "1992-04-11",
         "gender": "Мужской",
         "city": "Москва",
-        "avatar": "https://example.com/avatar7.png",
+        "avatar": "https://randomuser.me/api/portraits/men/46.jpg",
         "login": "user7@mail.ru",
         "password": "Password7",
         "skillsCanTeach": [
@@ -140,7 +140,7 @@
         "dateOfBirth": "1998-09-09",
         "gender": "Женский",
         "city": "Сочи",
-        "avatar": "https://example.com/avatar8.png",
+        "avatar": "https://randomuser.me/api/portraits/women/87.jpg",
         "login": "user8@mail.ru",
         "password": "Password8",
         "skillsCanTeach": [
@@ -158,7 +158,7 @@
         "dateOfBirth": "1990-05-05",
         "gender": "Мужской",
         "city": "Красноярск",
-        "avatar": "https://example.com/avatar9.png",
+        "avatar": "https://randomuser.me/api/portraits/men/78.jpg",
         "login": "user9@mail.ru",
         "password": "Password9",
         "skillsCanTeach": [
@@ -177,7 +177,7 @@
         "dateOfBirth": "1994-08-21",
         "gender": "Женский",
         "city": "Иркутск",
-        "avatar": "https://example.com/avatar10.png",
+        "avatar": "https://randomuser.me/api/portraits/women/68.jpg",
         "login": "user10@mail.ru",
         "password": "Password10",
         "skillsCanTeach": [
@@ -196,7 +196,7 @@
         "dateOfBirth": "1989-01-15",
         "gender": "Женский",
         "city": "Абакан",
-        "avatar": "https://example.com/avatar11.png",
+        "avatar": "https://randomuser.me/api/portraits/women/67.jpg",
         "login": "user11@mail.ru",
         "password": "Password11",
         "skillsCanTeach": [
@@ -214,7 +214,7 @@
         "dateOfBirth": "1997-06-18",
         "gender": "Женский",
         "city": "Кемерово",
-        "avatar": "https://example.com/avatar12.png",
+        "avatar": "https://randomuser.me/api/portraits/women/82.jpg",
         "login": "user12@mail.ru",
         "password": "Password12",
         "skillsCanTeach": [
@@ -232,7 +232,7 @@
         "dateOfBirth": "1986-12-03",
         "gender": "Женский",
         "city": "Пермь",
-        "avatar": "https://example.com/avatar13.png",
+        "avatar": "https://randomuser.me/api/portraits/women/81.jpg",
         "login": "user13@mail.ru",
         "password": "Password13",
         "skillsCanTeach": [
@@ -250,7 +250,7 @@
         "dateOfBirth": "1999-07-27",
         "gender": "Женский",
         "city": "Ярославль",
-        "avatar": "https://example.com/avatar14.png",
+        "avatar": "https://randomuser.me/api/portraits/women/41.jpg",
         "login": "user14@mail.ru",
         "password": "Password14",
         "skillsCanTeach": [
@@ -268,7 +268,7 @@
         "dateOfBirth": "1985-11-09",
         "gender": "Женский",
         "city": "Архангельск",
-        "avatar": "https://example.com/avatar15.png",
+        "avatar": "https://randomuser.me/api/portraits/women/28.jpg",
         "login": "user15@mail.ru",
         "password": "Password15",
         "skillsCanTeach": [
@@ -286,7 +286,7 @@
         "dateOfBirth": "1993-02-23",
         "gender": "Женский",
         "city": "Рязань",
-        "avatar": "https://example.com/avatar16.png",
+        "avatar": "https://randomuser.me/api/portraits/women/76.jpg",
         "login": "user16@mail.ru",
         "password": "Password16",
         "skillsCanTeach": [
@@ -304,7 +304,7 @@
         "dateOfBirth": "1992-09-17",
         "gender": "Женский",
         "city": "Москва",
-        "avatar": "https://example.com/avatar17.png",
+        "avatar": "https://randomuser.me/api/portraits/women/45.jpg",
         "login": "user17@mail.ru",
         "password": "Password17",
         "skillsCanTeach": [
@@ -322,7 +322,7 @@
         "dateOfBirth": "1996-04-29",
         "gender": "Женский",
         "city": "Санкт-Петербург",
-        "avatar": "https://example.com/avatar18.png",
+        "avatar": "https://randomuser.me/api/portraits/women/55.jpg",
         "login": "user18@mail.ru",
         "password": "Password18",
         "skillsCanTeach": [
@@ -341,7 +341,7 @@
         "dateOfBirth": "1989-08-02",
         "gender": "Мужской",
         "city": "Новосибирск",
-        "avatar": "https://example.com/avatar19.png",
+        "avatar": "https://randomuser.me/api/portraits/men/8.jpg",
         "login": "user19@mail.ru",
         "password": "Password19",
         "skillsCanTeach": [
@@ -359,7 +359,7 @@
         "dateOfBirth": "1997-12-13",
         "gender": "Женский",
         "city": "Москва",
-        "avatar": "https://example.com/avatar20.png",
+        "avatar": "https://randomuser.me/api/portraits/women/66.jpg",
         "login": "user20@mail.ru",
         "password": "Password20",
         "skillsCanTeach": [
