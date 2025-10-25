@@ -1,9 +1,9 @@
-import Error404 from '../../shared/assets/images/errors/error-404.svg';
+import Error500 from '../../shared/assets/images/errors/error-500.svg';
 import { Button } from '@/shared/ui/button';
 import styles from './Error.module.scss';
 import { useNavigate } from 'react-router-dom';
 
-export const NotFound404 = () => {
+export const Server500 = () => {
   const navigate = useNavigate();
 
   const handleError = () => {
@@ -16,10 +16,10 @@ export const NotFound404 = () => {
 
   return (
     <section className={styles.error__container}>
-      <Error404 className={styles.err__img}/>
+      <Error500 className={styles.err__img}/>
       <div className={styles.err__text}>
-        <h2>Страница не найдена</h2>
-        <p>К сожалению, эта страница недоступна. Вернитесь на главную страницу или попробуйте позже</p>
+        <h2>На сервере произошла ошибка</h2>
+        <p>Попробуйте позже или вернитесь на главную страницу</p>
       </div>
       <div className={styles.err__btns}>
         <Button type='button' label='Сообщить об ошибке' secondClass="secondary" className={styles.error__button} onClick={handleError}></Button>
@@ -28,4 +28,3 @@ export const NotFound404 = () => {
     </section>
   );
 };
-

@@ -5,6 +5,7 @@ import RootLayout from "./root-layout";
 import { MainPage } from "../../../pages/MainPage";
 import { SkillPage } from "../../../pages/skill/SkillPage";
 import { NotFound404 } from "../../../pages/errors/NotFound404";
+import { Server500 } from "../../../pages/errors/Server500";
 
 // Profile pages
 import { Profile } from "../../../pages/profile/Profile";
@@ -40,6 +41,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <MainPage /> },
       { path: "skill/:id", element: <SkillPage /> },
+      { path: "500", element: <Server500 /> },
       { path: "*", element: <NotFound404 /> },
 
       {
