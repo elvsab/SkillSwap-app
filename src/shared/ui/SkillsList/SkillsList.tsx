@@ -32,7 +32,7 @@ export const SkillsList: React.FC<SkillsListProps> = ({ isOpen, onClose }) => {
   const { skills } = mockData as { skills: SkillCategory[] };
 
   const styleInline: React.CSSProperties = {
-    top: 105,
+    top: 125,
     left: 36,
     width: 1136,
     transform: "none",

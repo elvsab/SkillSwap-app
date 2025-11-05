@@ -98,3 +98,12 @@
   line-height: var(--font-line-height-main);
   color: var(--font-color-primary);
 }
+
+.skillsToggle {
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.skillsToggleActive svg{
+  transform: rotate(180deg);
+}

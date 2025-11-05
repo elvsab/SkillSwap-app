@@ -9,6 +9,7 @@
   background-color: #ffffff;
   border-radius: 20px;
   box-sizing: border-box;
+  min-height: 100vh;
 }
 
 .header {

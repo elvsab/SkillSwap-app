@@ -4,6 +4,10 @@ import { useRef, useEffect } from 'react';
 import styles from './checkbox.module.scss';
 import type { CheckboxProps } from './types';
 
+import DoneIcon from "../../assets/icons/ui/checkbox-done.svg";
+import RemoveIcon from "../../assets/icons/ui/checkbox-remove.svg";
+import EmptyIcon from "../../assets/icons/ui/checkbox-empty.svg";
+
 export const Checkbox: React.FC<CheckboxProps> = ({
     variant,
     onChange,
@@ -18,6 +22,13 @@ export const Checkbox: React.FC<CheckboxProps> = ({
             inputRef.current.indeterminate = variant === 'mixed';
         }
     }, [variant]);
+
+    const Icon =
+    variant === "checked"
+      ? DoneIcon
+      : variant === "mixed"
+      ? RemoveIcon
+      : EmptyIcon;
 
 return (
     <label
@@ -35,7 +46,13 @@ return (
         checked={variant === 'checked'}
         aria-checked={variant === 'mixed' ? 'mixed' : variant === 'checked'}
       />
-      <span className={styles.checkbox__box} aria-hidden="true"/>
+      <span className={clsx(styles.checkbox__box, {
+          [styles.checked]: variant === "checked",
+          [styles.mixed]: variant === "mixed",
+        })}
+        aria-hidden="true">
+      <Icon className={styles.icon} aria-hidden="true" focusable="false" />
+      </span>
       {label && <span className={styles.checkbox__label}>{label}</span>}
     </label>
 )

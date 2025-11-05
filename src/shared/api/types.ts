@@ -1,20 +1,20 @@
 export type TCategory = {
   id: string;
-  name: string;
-  icon: string;
+  title: string;
+  //icon: string;
 };
 
 export type TSubcategory = {
   id: string;
-  name: string;
+  title: string;
   categoryId: string;
 };
 
 export type TSkill = {
   id: string;
-  subcategoryId: string;
-  name: string;
-  description: string;
+  subcategoryId?: string;
+  title: string;
+  description?: string;
   images?: string[];
 };
 

@@ -188,6 +188,7 @@ export const SkillCard: FC<UserCardProps> = ({
           label="Подробнее"
           buttonWidth="100%"
           padding="12px 109px"
+          className={styles.card__details_button}
         />
       )}
     </div>

@@ -107,3 +107,7 @@
 .liked {
   background: transparent url("../../assets/icons/actions/like-filled.svg") no-repeat;
 }
+
+.card__details_button {
+  justify-content: center;
+}

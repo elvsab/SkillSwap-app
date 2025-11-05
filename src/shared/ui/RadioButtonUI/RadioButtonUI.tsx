@@ -1,8 +1,7 @@
 import React from "react";
 import s from "./RadioButtonUI.module.css";
-// TODO: Add proper radio button icons
-// import ActiveIcon from "@/assets/icons/radiobutton-active.svg?react";
-// import EmptyIcon from "@/assets/icons/radiobutton-empty.svg?react";
+import ActiveIcon from "../../assets/icons/radioButton/radiobutton-active.svg";
+import EmptyIcon from "../../assets/icons/radioButton/radiobutton-empty.svg";
 
 export type RadioButtonUIProps = {
   checked?: boolean;
@@ -19,7 +18,7 @@ export const RadioButtonUI: React.FC<RadioButtonUIProps> = ({
   className,
   onClick,
 }) => {
-  // const Icon = checked ? ActiveIcon : EmptyIcon;
+  const Icon = checked ? ActiveIcon : EmptyIcon;
   const rootCls = [
     s.btn,
     checked && s.checked,
@@ -38,8 +37,7 @@ export const RadioButtonUI: React.FC<RadioButtonUIProps> = ({
       disabled={disabled}
       onClick={onClick}
     >
-      {/* <Icon className={s.icon} /> */}
-      <span className={s.icon}>{checked ? '●' : '○'}</span>
+      <Icon className={s.icon} />
     </button>
   );
 };

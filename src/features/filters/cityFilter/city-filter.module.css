@@ -1,6 +1,7 @@
 .container {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   width: 284px;
   background-color: transparent;
 }
@@ -27,22 +28,38 @@
 .button {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 4px;
   margin-top: 12px;
   padding: 0;
-  color: #508826;
+  color: var(--font-color-link);
   font-size: 16px;
   background: none;
   border: none;
   cursor: pointer;
+  transition: color 0.2s ease;
 }
 
-.button::after {
-  display: inline-block;
-  width: 24px;
-  height: 8px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='8' fill='none'%3E%3Cpath fill='%23253017' d='M8 7.935c-.646 0-1.292-.249-1.781-.738L.2 1.179a.696.696 0 0 1 0-.978.696.696 0 0 1 .978 0l6.018 6.018a1.136 1.136 0 0 0 1.606 0L14.821.2a.696.696 0 0 1 .978 0 .696.696 0 0 1 0 .978L9.781 7.197c-.489.49-1.135.738-1.781.738Z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-size: contain;
-  content: "";
+.button:hover {
+  opacity: 0.8;
+}
+
+.cityList {
+  overflow: hidden;
+  max-height: 216px;
+  transition: max-height 0.4s ease-in-out;
+}
+
+.cityListExpanded {
+  max-height: 1000px;
+}
+
+.chevron {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.4s ease-in-out;
+}
+
+.chevronUp {
+  transform: rotate(180deg);
 }
