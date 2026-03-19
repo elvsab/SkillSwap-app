@@ -32,6 +32,8 @@ const mockUsers: User[] = [
       { id: "102", title: "Маркетинг и реклама", color: "#E3F2FD" },
     ],
     skillsWantsToLearn: [{ id: "205", title: "Китайский", color: "#FFEBEE" }],
+    isNew: false,
+    isPopular: true,
   },
   {
       id: "4",
@@ -44,6 +46,8 @@ const mockUsers: User[] = [
       password: "Password4",
       skillsCanTeach: [{ id: "107", title: "Проектное управление", color: "#E3F2FD" }],
       skillsWantsToLearn: [{ id: "206", title: "Японский", color: "#E8F5E9" }],
+      isNew: false,
+      isPopular: false,
     },
 ];
 

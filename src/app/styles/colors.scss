@@ -23,6 +23,25 @@
     --tag-home: #f7ebe5;
     --tag-health: #e9f7e7;
     --tag-plus: #e8ecf7;
+    --border-color: rgba(37, 48, 23, 0.12);
 }
 
+[data-theme="dark"] {
+    --font-color-primary: #f4f8ed;
+    --font-color-secondary: #b9c7aa;
+    --font-color-accent: #abd27a;
+    --font-color-link: #c6ea97;
+    --font-color-disabled: #7f8b73;
 
+    --bg-color: #182015;
+    --card-bg: #222c1d;
+    --input-bg: #273323;
+
+    --button-color-toggle: #7f8b73;
+    --button-color-disabled: #32402d;
+    --button-color-hover: #3a4c34;
+
+    --alarm-color: #ff8b7e;
+    --error-color: #ff8b7e;
+    --border-color: rgba(244, 248, 237, 0.12);
+}

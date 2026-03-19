@@ -1,0 +1,50 @@
+.viewport {
+  position: fixed;
+  left: 24px;
+  bottom: 24px;
+  z-index: 50;
+  display: grid;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.toast {
+  min-width: 280px;
+  max-width: 360px;
+  border-radius: 18px;
+  border: 1px solid var(--border-color);
+  background: var(--card-bg);
+  box-shadow: 0 18px 48px rgba(37, 48, 23, 0.12);
+  padding: 16px;
+  pointer-events: auto;
+}
+
+.title {
+  margin: 0 0 6px;
+  font-weight: 700;
+}
+
+.description {
+  margin: 0;
+  color: var(--font-color-secondary);
+  line-height: 1.5;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+@media (max-width: 768px) {
+  .viewport {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .toast {
+    min-width: 0;
+    max-width: none;
+  }
+}

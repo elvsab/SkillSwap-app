@@ -5,7 +5,7 @@ import { Button } from "../../shared/ui/button";
 import { SearchBar } from "../../shared/ui/index";
 import { IconWrapper } from "../../shared/ui/iconWrapper";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ThemeIcon from "../../shared/assets/icons/ui/moon.svg";
 import NotificationIcon from "../../shared/assets/icons/notifications/notification.svg";
 import HeartIcon from "../../shared/assets/icons/actions/like.svg";
@@ -13,8 +13,11 @@ import CrossIcon from "../../shared/assets/icons/ui/cross.svg";
 import chevronDownIcon from "../../shared/assets/icons/ui/chevron-down.svg";
 import Avatar from "../../shared/assets/icons/profile/user.svg";
 import { SkillsList } from "@/shared/ui/SkillsList";
-import { useDispatch } from "react-redux";
-import { filtersActions } from "../../features/filters/model/filtersSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../features/auth/model/authSlice";
+import { selectUnreadNotifications, readAllNotifications } from "../../features/notifications/model/notificationsSlice";
+import type { AppDispatch } from "../../app/providers/store";
+import { toggleTheme } from "../../features/theme/model/themeSlice";
 
 type HeaderVariant = "guest" | "user" | "auth";
 
@@ -27,9 +30,14 @@ export interface HeaderProps {
 
 export const Header = ({ variant, name, searchText, onSearchChange }: HeaderProps) => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
+  const unreadNotifications = useSelector(selectUnreadNotifications);
 
   const [isSkillsOpen, setIsSkillsOpen] = useState(false);
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
+  const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
+  const profileMenuRef = useRef<HTMLDivElement | null>(null);
+  const notificationsRef = useRef<HTMLDivElement | null>(null);
 
   const toggleSkills = () => setIsSkillsOpen((s) => !s);
   const closeSkills = () => setIsSkillsOpen(false);
@@ -41,24 +49,24 @@ export const Header = ({ variant, name, searchText, onSearchChange }: HeaderProp
 
   // Handle theme toggle
   const handleThemeToggle = () => {
-    // TODO: Implement theme toggle functionality
-    console.log("Theme toggle clicked");
+    dispatch(toggleTheme());
   };
 
   // Handle notifications
   const handleNotifications = () => {
-    // TODO: Open notifications dropdown
-    console.log("Notifications clicked");
+    setIsNotificationsOpen((current) => !current);
+    setIsProfileMenuOpen(false);
   };
 
   // Handle favorites
   const handleFavorites = () => {
-    navigate("/favorites");
+    navigate("/profile/favorites");
   };
 
   // Handle profile
   const handleProfile = () => {
     navigate("/profile");
+    setIsProfileMenuOpen(false);
   };
 
   // Handle login
@@ -78,8 +86,34 @@ export const Header = ({ variant, name, searchText, onSearchChange }: HeaderProp
 
   const handleSearchChange = (value: string) => {
     onSearchChange(value);
-    dispatch(filtersActions.setSearchQuery(value));
   };
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/");
+    setIsProfileMenuOpen(false);
+  };
+
+  useEffect(() => {
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (
+        profileMenuRef.current &&
+        !profileMenuRef.current.contains(event.target as Node)
+      ) {
+        setIsProfileMenuOpen(false);
+      }
+
+      if (
+        notificationsRef.current &&
+        !notificationsRef.current.contains(event.target as Node)
+      ) {
+        setIsNotificationsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => document.removeEventListener("mousedown", handleOutsideClick);
+  }, []);
 
   return (
     <header className={styles.header}>
@@ -157,18 +191,47 @@ export const Header = ({ variant, name, searchText, onSearchChange }: HeaderProp
               ariaLabel="ThemeIcon"
             />
           </button>
-          <button
-            onClick={handleNotifications}
-            style={{ background: "none", border: "none", cursor: "pointer" }}
-            aria-label="Notifications"
-          >
-            <IconWrapper
-              icon={NotificationIcon}
-              width={24}
-              height={24}
-              ariaLabel="NotificationIcon"
-            />
-          </button>
+          <div className={styles.dropdownWrap} ref={notificationsRef}>
+            <button
+              onClick={handleNotifications}
+              style={{ background: "none", border: "none", cursor: "pointer" }}
+              aria-label="Notifications"
+              className={styles.iconButton}
+            >
+              <IconWrapper
+                icon={NotificationIcon}
+                width={24}
+                height={24}
+                ariaLabel="NotificationIcon"
+              />
+              {unreadNotifications.length > 0 && <span className={styles.badge} />}
+            </button>
+            {isNotificationsOpen && (
+              <div className={styles.dropdownPanel}>
+                <div className={styles.dropdownHeader}>
+                  <span>Уведомления</span>
+                  <button
+                    type="button"
+                    className={styles.inlineAction}
+                    onClick={() => dispatch(readAllNotifications())}
+                  >
+                    Прочитать все
+                  </button>
+                </div>
+                <div className={styles.notificationList}>
+                  {unreadNotifications.length === 0 && (
+                    <p className={styles.emptyText}>Новых уведомлений пока нет.</p>
+                  )}
+                  {unreadNotifications.slice(0, 5).map((notification) => (
+                    <div key={notification.id} className={styles.notificationItem}>
+                      <strong>{notification.title}</strong>
+                      <p>{notification.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
           <button
             onClick={handleFavorites}
             style={{ background: "none", border: "none", cursor: "pointer" }}
@@ -181,20 +244,35 @@ export const Header = ({ variant, name, searchText, onSearchChange }: HeaderProp
               ariaLabel="HeartIcon"
             />
           </button>
-          <button
-            onClick={handleProfile}
-            className={styles.profile}
-            style={{ background: "none", border: "none", cursor: "pointer" }}
-            aria-label="Profile"
-          >
-            <span className={styles.profile_name}>{name}</span>
-            <IconWrapper
-              icon={Avatar}
-              width={48}
-              height={48}
-              ariaLabel="Avatar"
-            />
-          </button>
+          <div className={styles.dropdownWrap} ref={profileMenuRef}>
+            <button
+              onClick={() => {
+                setIsProfileMenuOpen((current) => !current);
+                setIsNotificationsOpen(false);
+              }}
+              className={styles.profile}
+              style={{ background: "none", border: "none", cursor: "pointer" }}
+              aria-label="Profile"
+            >
+              <span className={styles.profile_name}>{name}</span>
+              <IconWrapper
+                icon={Avatar}
+                width={48}
+                height={48}
+                ariaLabel="Avatar"
+              />
+            </button>
+            {isProfileMenuOpen && (
+              <div className={styles.dropdownPanel}>
+                <button type="button" className={styles.menuAction} onClick={handleProfile}>
+                  Личный кабинет
+                </button>
+                <button type="button" className={styles.menuAction} onClick={handleLogout}>
+                  Выйти из аккаунта
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       )}
 

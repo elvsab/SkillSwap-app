@@ -33,7 +33,7 @@ export const SkillsFilter: React.FC = () => {
     const states: Record<string, CheckboxVariant> = {};
 
     for (const category of categoriesForFilter) {
-      const subcategoryIds = category.subcategories.map((sc: any) => sc.id);
+      const subcategoryIds = category.subcategories.map((sc) => sc.id);
       const totalSubcategories = subcategoryIds.length;
 
       if (totalSubcategories === 0) {

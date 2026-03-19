@@ -1,6 +1,26 @@
 .container {
   display: flex;
   flex-direction: column;
+  gap: 20px;
+}
+
+.list {
+  display: grid;
+  gap: 16px;
+  width: 100%;
+}
+
+.card {
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 20px;
+  background: var(--card-bg);
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 8px;
+  gap: 16px;
+}
+
+.emptyState {
+  color: var(--font-color-secondary);
 }

@@ -43,7 +43,7 @@ export const loginUser = createAsyncThunk<
       skillCanTeach: {
         id: "101",
         subcategoryId: "frontend",
-        name: "Frontend",
+        title: "Frontend",
         description: "Разработка интерфейсов на React, TypeScript и JS",
         images: [],
       },
@@ -86,7 +86,7 @@ export const registerUser = createAsyncThunk<
       skillCanTeach: {
         id: "201",
         subcategoryId: "design",
-        name: "Design",
+        title: "Design",
         description: "Графический и UI-дизайн",
         images: [],
       },

@@ -31,6 +31,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           />
           {isPasswordInput && (
             <button
+              type="button"
               className={styles.input__icon_toggle_visibility}
               onClick={toggleVisibility}
               aria-label={visible ? "Скрыть пароль" : "Показать пароль"}

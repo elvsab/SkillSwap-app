@@ -1,10 +1,9 @@
 import { Catalog } from "../shared/ui/catalog/Catalog";
 import { FilterPanel } from "../widgets/filterPanel/filterPanel";
 import styles from "./MainPage.module.scss";
-import { useReducer, useMemo } from "react";
-import { useDebounce } from "../shared/hooks/useDebounce";
+import { useEffect, useMemo, useState } from "react";
+import { useDebounce, useStorageSync } from "../shared/hooks";
 import { useSelector } from "react-redux";
-import mockData from "../api/mockData.json";
 import type { User } from "../shared/ui/SkillCard/types";
 import {
   selectCity,
@@ -13,52 +12,15 @@ import {
   selectSkillIds,
   selectSearchQuery
 } from "../features/filters/model/filtersSlice";
-
-interface PaginationState {
-  displayedUsers: User[];
-  currentPage: number;
-  hasMore: boolean;
-}
-
-type PaginationAction = 
-  | { type: 'SHOW_MORE' }
-  | { type: 'RESET' };
+import { Button } from "../shared/ui/button";
+import { getCatalogUsers } from "../shared/lib/skillswap-storage";
 
 const USERS_PER_PAGE = 20;
 
-const initialState: PaginationState = {
-  displayedUsers: [],
-  currentPage: 1,
-  hasMore: true
-};
-
-function paginationReducer(state: PaginationState, action: PaginationAction): PaginationState {
-  switch (action.type) {
-    case 'SHOW_MORE':
-      { const nextPage = state.currentPage + 1;
-      const allUsers = mockData.users as User[];
-      const newDisplayCount = nextPage * USERS_PER_PAGE;
-      const newDisplayedUsers = allUsers.slice(0, newDisplayCount);
-      
-      return {
-        displayedUsers: newDisplayedUsers,
-        currentPage: nextPage,
-        hasMore: newDisplayCount < allUsers.length
-      }; }
-
-    case 'RESET':
-      return {
-        displayedUsers: (mockData.users as User[]).slice(0, USERS_PER_PAGE),
-        currentPage: 1,
-        hasMore: (mockData.users as User[]).length > USERS_PER_PAGE
-      };
-
-    default:
-      return state;
-  }
-}
-
 export const MainPage = () => {
+  useStorageSync();
+  const allUsers = getCatalogUsers() as User[];
+  const [sortMode, setSortMode] = useState<"default" | "newest">("default");
 
   const role = useSelector(selectMode);
   const gender = useSelector(selectGender);
@@ -74,24 +36,26 @@ export const MainPage = () => {
     cities,
     skills
   }), [debouncedSearchText, role, gender, cities, skills]);
-
-  const [state, dispatch] = useReducer(paginationReducer, initialState, () => {
-    const allUsers = mockData.users as User[];
-    return {
-      displayedUsers: allUsers.slice(0, USERS_PER_PAGE),
-      currentPage: 1,
-      hasMore: allUsers.length > USERS_PER_PAGE
-    };
-  });
+  const [visibleCount, setVisibleCount] = useState(USERS_PER_PAGE);
 
   const handleShowMore = () => {
-    dispatch({ type: 'SHOW_MORE' });
+    setVisibleCount((current) => current + USERS_PER_PAGE);
   };
+
+  const hasActiveFilters = useMemo(
+    () =>
+      combinedFilters.searchText.trim() !== "" ||
+      combinedFilters.role !== "all" ||
+      combinedFilters.gender !== null ||
+      combinedFilters.cities.length > 0 ||
+      combinedFilters.skills.length > 0,
+    [combinedFilters]
+  );
 
   const filteredUsers = useMemo(() => {
     const search = combinedFilters.searchText?.trim().toLowerCase() ?? "";
 
-    return state.displayedUsers.filter((user:User) => {
+    const matched = allUsers.filter((user: User) => {
       const matchesSearch = !search ||
         user.name.toLowerCase().includes(search) ||
         user.city.toLowerCase().includes(search) ||
@@ -135,7 +99,27 @@ export const MainPage = () => {
         matchesSkill
       );
     });
-  }, [state.displayedUsers, combinedFilters]);
+
+    if (sortMode === "newest") {
+      return [...matched].sort((first, second) => {
+        const firstDate = first.createdAt ? Date.parse(first.createdAt) : 0;
+        const secondDate = second.createdAt ? Date.parse(second.createdAt) : 0;
+        return secondDate - firstDate;
+      });
+    }
+
+    return matched;
+  }, [allUsers, combinedFilters, sortMode]);
+
+  const displayedUsers = hasActiveFilters
+    ? filteredUsers.slice(0, visibleCount)
+    : allUsers;
+
+  const hasMore = hasActiveFilters && displayedUsers.length < filteredUsers.length;
+
+  useEffect(() => {
+    setVisibleCount(USERS_PER_PAGE);
+  }, [combinedFilters]);
 
   return (
     <div className={styles.page}>
@@ -146,17 +130,28 @@ export const MainPage = () => {
           </aside>
           
           <div className={styles.content}>
-            <Catalog filters={combinedFilters} users={filteredUsers}/>
-            {state.hasMore && (
+            <div className={styles.toolbar}>
+              <Button
+                label={sortMode === "newest" ? "Сначала новые" : "По умолчанию"}
+                secondClass="secondary"
+                onClick={() =>
+                  setSortMode((current) =>
+                    current === "default" ? "newest" : "default"
+                  )
+                }
+              />
+            </div>
+            <Catalog filters={combinedFilters} users={displayedUsers} allUsers={allUsers} />
+            {hasMore && (
               <div className={styles.pagination}>
                 <button onClick={handleShowMore}>Показать ещё</button>
                 <p>
-                  Показано {state.displayedUsers.length} из {mockData.users.length} пользователей
+                  Показано {displayedUsers.length} из {filteredUsers.length} пользователей
                 </p>
               </div>
             )}
 
-            {!state.hasMore && state.displayedUsers.length > 0 && (
+            {!hasMore && hasActiveFilters && displayedUsers.length > 0 && (
               <div className={styles.pagination}>
                 <p>Все пользователи загружены</p>
               </div>

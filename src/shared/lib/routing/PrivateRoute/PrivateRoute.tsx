@@ -1,23 +1,25 @@
 import { type ReactNode } from "react";
 import { Navigate, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectIsAuthenticated } from "../../../../features/auth/model/authSlice";
 
 interface PrivateRouteProps {
   children: ReactNode;
   anonymous?: boolean;
 }
 
-const TOKEN_KEY = "token";
-
 export const PrivateRoute = ({ children, anonymous }: PrivateRouteProps) => {
   const location = useLocation();
+  const isAuthenticated = useSelector(selectIsAuthenticated);
 
   if (anonymous) {
+    if (isAuthenticated) {
+      return <Navigate to="/profile" replace />;
+    }
     return <>{children}</>;
   }
 
-  const token = typeof window !== "undefined" ? localStorage.getItem(TOKEN_KEY) : null;
-
-  if (!token) {
+  if (!isAuthenticated) {
     return <Navigate to="/login" replace state={{ from: location }} />;
   }
 

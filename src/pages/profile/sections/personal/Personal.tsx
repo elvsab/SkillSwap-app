@@ -1,3 +1,5 @@
+import { useEffect, useMemo, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./Personal.module.css";
 import { Button } from "../../../../shared/ui/button";
 import { Input } from "../../../../shared/ui/index";
@@ -5,16 +7,79 @@ import { IconWrapper } from "../../../../shared/ui/iconWrapper";
 import Avatar from "../../../../shared/assets/icons/profile/user.svg";
 import Edit from "../../../../shared/assets/icons/actions/gallery-add.svg";
 import iconStyles from "../../../../shared/ui/iconWrapper/IconWrapper.module.css";
+import {
+  selectAuthLoading,
+  selectUser,
+  updateProfile,
+} from "../../../../features/auth/model/authSlice";
+import type { AppDispatch } from "../../../../app/providers/store";
+import type { TUser } from "../../../../shared/api/types";
+
+type PersonalFormState = {
+  email: string;
+  name: string;
+  birthDate: string;
+  gender: TUser["gender"];
+  city: string;
+  aboutUser: string;
+};
 
 export const Personal = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const user = useSelector(selectUser);
+  const loading = useSelector(selectAuthLoading);
+  const [form, setForm] = useState<PersonalFormState>({
+    email: "",
+    name: "",
+    birthDate: "",
+    gender: "Женский",
+    city: "",
+    aboutUser: "",
+  });
+
+  useEffect(() => {
+    if (!user) {
+      return;
+    }
+
+    setForm({
+      email: user.email,
+      name: user.name,
+      birthDate: user.birthDate,
+      gender: user.gender,
+      city: user.city,
+      aboutUser: user.aboutUser ?? "",
+    });
+  }, [user]);
+
+  const hasChanges = useMemo(() => {
+    if (!user) {
+      return false;
+    }
+
+    return (
+      form.email !== user.email ||
+      form.name !== user.name ||
+      form.birthDate !== user.birthDate ||
+      form.gender !== user.gender ||
+      form.city !== user.city ||
+      form.aboutUser !== (user.aboutUser ?? "")
+    );
+  }, [form, user]);
+
+  const updateField = <K extends keyof PersonalFormState>(
+    field: K,
+    value: PersonalFormState[K]
+  ) => {
+    setForm((current) => ({ ...current, [field]: value }));
+  };
+
   const handleSave = () => {
-    // здесь позже можно открыть модалку или просто сохранить
-    console.log("Сохранить изменения");
+    void dispatch(updateProfile(form));
   };
 
   const handleChangePass = () => {
-    // здесь позже можно открыть модалку
-    console.log("Изменить пароль");
+    window.alert("Функция смены пароля будет следующей итерацией.");
   };
 
   return (
@@ -24,28 +89,52 @@ export const Personal = () => {
           label="Почта"
           type="email"
           name="email"
-          value="Mariia@gmail.com"
+          value={form.email}
+          onChange={(e) => updateField("email", e.target.value)}
         />
         <Button
           label="Изменить пароль"
           textColor="var(--font-color-link)"
           onClick={handleChangePass}
         />
-        <Input label="Имя" value="Мария" />
+        <Input
+          label="Имя"
+          value={form.name}
+          onChange={(e) => updateField("name", e.target.value)}
+        />
         <div className={styles.profile_data_inner}>
-          <Input label="Дата рождения" value="28.09.1999" />
-          <Input label="Пол" value="Женский" />
+          <Input
+            label="Дата рождения"
+            value={form.birthDate}
+            onChange={(e) => updateField("birthDate", e.target.value)}
+          />
+          <Input
+            label="Пол"
+            value={form.gender}
+            onChange={(e) =>
+              updateField(
+                "gender",
+                e.target.value === "Мужской" ? "Мужской" : "Женский"
+              )
+            }
+          />
         </div>
-        <Input label="Город" value="Алматы" />
+        <Input
+          label="Город"
+          value={form.city}
+          onChange={(e) => updateField("city", e.target.value)}
+        />
         <Input
           label="О себе"
-          value="Люблю учиться новому, особенно если это можно делать за чаем и в пижаме. Всегда готова пообщаться и обменяться чем‑то интересным!"
+          value={form.aboutUser}
+          onChange={(e) => updateField("aboutUser", e.target.value)}
         />
         <Button
           label="Сохранить"
           secondClass="primary"
           onClick={handleSave}
-          disabled={true}
+          disabled={!hasChanges || loading}
+          loading={loading}
         />
       </div>
       <div className={styles.profile_img}>

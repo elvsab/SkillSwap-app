@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 import { type CardListProps } from './type';
 import { SkillCard } from '../SkillCard/SkillCard';
 import styles from './CardList.module.scss';

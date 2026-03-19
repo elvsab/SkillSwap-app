@@ -117,10 +117,10 @@ export const SkillCard: FC<UserCardProps> = ({
           <div className={styles.card__skills_list}>
             {user.skillsCanTeach.length <= 2
               ? user.skillsCanTeach.map((skill) => (
-                  <SkillTag
+                <SkillTag
                     key={skill.id}
                     label={skill.title}
-                    backgroundColor={skill.color}
+                    backgroundColor={skill.color ?? "#E3F2FD"}
                   />
                 ))
               : user.skillsCanTeach
@@ -145,10 +145,10 @@ export const SkillCard: FC<UserCardProps> = ({
           <div className={styles.card__skills_list}>
             {user.skillsWantsToLearn.length <= 2
               ? user.skillsWantsToLearn.map((skill) => (
-                  <SkillTag
+                <SkillTag
                     key={skill.id}
                     label={skill.title}
-                    backgroundColor={skill.color}
+                    backgroundColor={skill.color ?? "#E8F5E9"}
                   />
                 ))
               : user.skillsWantsToLearn

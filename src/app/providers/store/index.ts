@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-// TODO: Re-enable slices once TypeScript module resolution is fixed
 import { authReducer } from "../../../features/auth/model/authSlice";
 import { skillsReducer } from "../../../entities/skills/model/skillsSlice";
 import { filtersReducer } from "../../../features/filters/model/filtersSlice";
 import { usersReducer } from "../../../entities/users/model/usersSlice";
 import { favoritesReducer } from '../../../features/favorites/model/favoritesSlice';
+import { requestsReducer } from "../../../features/requests/model/requestsSlice";
+import { notificationsReducer } from "../../../features/notifications/model/notificationsSlice";
+import { themeReducer } from "../../../features/theme/model/themeSlice";
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +15,9 @@ export const store = configureStore({
     filters: filtersReducer,
     users: usersReducer,
     favorites: favoritesReducer,
+    requests: requestsReducer,
+    notifications: notificationsReducer,
+    theme: themeReducer,
   },
 });
 

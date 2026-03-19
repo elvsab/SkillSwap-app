@@ -1,20 +1,7 @@
-// import { ReactNode } from 'react';
+import type { TSkillTag, TUserMain } from "../../api/types";
 
-export interface Skill {
-  id: string;
-  title: string;
-  color: string;
-}
-
-export interface User {
-  id: string;
-  name: string;
-  avatar: string;
-  city: string;
-  dateOfBirth: string;
-  skillsCanTeach: Skill[];
-  skillsWantsToLearn: Skill[];
-}
+export type Skill = TSkillTag;
+export type User = TUserMain;
 
 export interface CardListProps {
   cards: User[];

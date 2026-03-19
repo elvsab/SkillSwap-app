@@ -6,7 +6,7 @@ import {
   isRejected,
   isFulfilled,
 } from "@reduxjs/toolkit";
-// RootState will be defined in the store file
+import type { RootState } from "../../../app/providers/store";
 import { getCategories } from "../../../api/categories-api";
 import { getSubcategories } from "../../../api/subcategories-api";
 import { getSkills } from "../../../api/skills-api";
@@ -99,14 +99,14 @@ const skillsSlice = createSlice({
 
 export const skillsReducer = skillsSlice.reducer;
 
-export const selectCategories = (state: any) => state.skills.categories;
-export const selectSubcategories = (state: any) =>
+export const selectCategories = (state: RootState) => state.skills.categories;
+export const selectSubcategories = (state: RootState) =>
   state.skills.subcategories;
-export const selectSubcategorieById = (state: any, id: string) =>
+export const selectSubcategorieById = (state: RootState, id: string) =>
   state.skills.subcategories.find((sub: TSubcategory) => sub.id === id);
-export const selectAllSkills = (state: any) => state.skills.skills;
-export const selectSkillsLoading = (state: any) => state.skills.loading;
-export const selectSkillsError = (state: any) => state.skills.error;
+export const selectAllSkills = (state: RootState) => state.skills.skills;
+export const selectSkillsLoading = (state: RootState) => state.skills.loading;
+export const selectSkillsError = (state: RootState) => state.skills.error;
 
 export const selectCategoriesForFilter = createSelector(
   [selectCategories, selectSubcategories],

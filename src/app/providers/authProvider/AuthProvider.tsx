@@ -11,8 +11,8 @@ export const AuthProvider = ({ children }: Props) => {
   const dispatch = useDispatch<AppDispatch>();
   const isAuthenticated = useSelector(selectIsAuthenticated);
 
-  const handleLogin = (email: string, password: string) => {
-    dispatch(loginUser({ email, password }));
+  const handleLogin = async (email: string, password: string) => {
+    await dispatch(loginUser({ email, password })).unwrap();
   };
 
   const handleLogout = () => {

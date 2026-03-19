@@ -42,6 +42,27 @@
   overflow: hidden;
 }
 
+.toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 0 8px;
+  color: var(--font-color-secondary);
+}
+
+.pagination button {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--font-color-primary);
+}
+
 // Адаптивность для мобильных
 @media (max-width: 1024px) {
   .mainContent {
@@ -57,5 +78,10 @@
   
   .content {
     min-width: 100%;
+  }
+
+  .pagination {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

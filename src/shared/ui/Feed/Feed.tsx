@@ -1,7 +1,7 @@
 import { Button } from "../button/Button";
 import { Title } from "../Title";
 import { type FeedProps } from "./type";
-import { FC } from 'react';
+import type { FC } from 'react';
 import { CardList } from "../CardList/CardList";
 import styles from './Feed.module.scss';
 import ButtonIcon from '../../assets/icons/ui/chevron-right.svg'

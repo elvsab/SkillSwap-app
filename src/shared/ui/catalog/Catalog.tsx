@@ -1,6 +1,6 @@
 import {type FC, useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Feed } from '../Feed/Feed';
-import mockData from '../../../api/mockData.json';
 import type { User } from '../SkillCard/types';
 import { Title } from '../Title/Title';
 import { CardList } from '../CardList/CardList';
@@ -17,6 +17,7 @@ interface CatalogProps {
     skills: string[];
   };
   users: User[];
+  allUsers: User[];
 }
 
 export const Catalog: FC<CatalogProps> = ({ filters = {
@@ -25,63 +26,12 @@ export const Catalog: FC<CatalogProps> = ({ filters = {
   gender: null,
   cities: [],
   skills: []
-} }) => {
+}, users, allUsers }) => {
   const [currentView, setCurrentView] = useState<ViewMode>('all');
-  const cards: User[] = mockData.users as User[];
+  const navigate = useNavigate();
 
-  const filterCardsBySearch = (cards: User[], searchText: string): User[] => {
-    if (!searchText.trim()) return cards;
-    
-    const lowercasedSearch = searchText.toLowerCase();
-    
-    return cards.filter(card => 
-      card.skillsCanTeach.some(skill => 
-        skill.title.toLowerCase().includes(lowercasedSearch)
-      ) ||
-      card.skillsWantsToLearn.some(skill => 
-        skill.title.toLowerCase().includes(lowercasedSearch)
-      ) ||
-      card.name.toLowerCase().includes(lowercasedSearch) ||
-      card.city.toLowerCase().includes(lowercasedSearch)
-    );
-  };
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const filterCardsByOtherFilters = (cards: User[], filters: any): User[] => {
-    let filtered = cards;
-
-    if (filters.role !== 'all') {
-      if (filters.role === 'canTeach') {
-        filtered = filtered.filter(card => card.skillsCanTeach.length > 0);
-      } else if (filters.role === 'wantsToLearn') {
-        filtered = filtered.filter(card => card.skillsWantsToLearn.length > 0);
-      }
-    }
-
-    if (filters.gender) {
-      filtered = filtered.filter(card => card.gender === filters.gender);
-    }
-
-    if (filters.cities.length > 0) {
-      filtered = filtered.filter(card => 
-        filters.cities.some((city: string) => 
-          card.city.toLowerCase().includes(city.toLowerCase())
-        )
-      );
-    }
-
-    if (filters.skills.length > 0) {
-      filtered = filtered.filter(card =>
-        card.skillsCanTeach.some(skill => 
-          filters.skills.includes(skill.id)
-        ) ||
-        card.skillsWantsToLearn.some(skill => 
-          filters.skills.includes(skill.id)
-        )
-      );
-    }
-
-    return filtered;
+  const handleOpenDetails = (id: string) => {
+    navigate(`/skill/${id}`);
   };
 
   const handleShowAll = (category: ViewMode) => {
@@ -99,24 +49,12 @@ export const Catalog: FC<CatalogProps> = ({ filters = {
     return shuffled.slice(0, count);
   };
 
-  const filteredCards = useMemo(() => {
-    let result = cards;
-
-    if (filters.searchText.trim()) {
-      result = filterCardsBySearch(result, filters.searchText);
-    }
-    
-    result = filterCardsByOtherFilters(result, filters);
-    
-    return result;
-  }, [cards, filters]);
-
   const popularCards = useMemo(() => 
-    cards.filter(card => card.isPopular), [cards]);
+    allUsers.filter(card => card.isPopular), [allUsers]);
   const newCards = useMemo(() => 
-    cards.filter(card => card.isNew), [cards]);
+    allUsers.filter(card => card.isNew), [allUsers]);
   const recommendedCards = useMemo(() => 
-    getRandomCards(cards, 9), [cards]);
+    getRandomCards(allUsers, 9), [allUsers]);
 
   const hasActiveFilters = filters.searchText.trim() || 
                           filters.role !== 'all' || 
@@ -129,15 +67,20 @@ export const Catalog: FC<CatalogProps> = ({ filters = {
       <div className={styles.catalog}>
         <div className={styles.categoryHeader}>
           <Title as="h1" size="lg">
-            {`Подходящие предложения: ${filteredCards.length}`}
+            {`Подходящие предложения: ${users.length}`}
           </Title>
         </div>
-        {filteredCards.length > 0 && (
+        {users.length > 0 && (
           <CardList 
-            cards={filteredCards}
+            cards={users}
             onLikeClick={(id) => console.log('Like:', id)}
-            onButtonClick={(id) => console.log('Details:', id)}
+            onButtonClick={handleOpenDetails}
           />
+        )}
+        {users.length === 0 && (
+          <Title as="h4" size="xs">
+            По выбранным фильтрам пока ничего не найдено.
+          </Title>
         )}
       </div>
     );
@@ -166,7 +109,7 @@ export const Catalog: FC<CatalogProps> = ({ filters = {
         <CardList 
           cards={categoryCards}
           onLikeClick={(id) => console.log('Like:', id)}
-          onButtonClick={(id) => console.log('Details:', id)}
+          onButtonClick={handleOpenDetails}
         />
       </div>
     );
@@ -179,20 +122,20 @@ export const Catalog: FC<CatalogProps> = ({ filters = {
         cards={popularCards.slice(0, 3)}
         handleShowAll={popularCards.length > 3 ? () => handleShowAll('popular') : undefined}
         onLikeClick={(id) => console.log('Like:', id)}
-        onButtonClick={(id) => console.log('Details:', id)}
+        onButtonClick={handleOpenDetails}
       />
       <Feed 
         title='Новое' 
         cards={newCards.slice(0, 3)}
         handleShowAll={newCards.length > 3 ? () => handleShowAll('new') : undefined}
         onLikeClick={(id) => console.log('Like:', id)}
-        onButtonClick={(id) => console.log('Details:', id)}
+        onButtonClick={handleOpenDetails}
       />
       <Feed 
         title='Рекомендуем' 
         cards={recommendedCards.slice(0, 9)}
         onLikeClick={(id) => console.log('Like:', id)}
-        onButtonClick={(id) => console.log('Details:', id)}
+        onButtonClick={handleOpenDetails}
       />
     </div>
   );

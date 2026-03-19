@@ -70,6 +70,7 @@
 .buttons {
   display: flex;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 .icons_user {
@@ -99,6 +100,86 @@
   color: var(--font-color-primary);
 }
 
+.dropdownWrap {
+  position: relative;
+}
+
+.dropdownPanel {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  width: 320px;
+  border-radius: 24px;
+  border: 1px solid var(--border-color);
+  background: var(--card-bg);
+  box-shadow: 0 24px 48px rgba(37, 48, 23, 0.12);
+  padding: 18px;
+  z-index: 20;
+}
+
+.dropdownHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+  color: var(--font-color-primary);
+  font-weight: 700;
+}
+
+.notificationList {
+  display: grid;
+  gap: 12px;
+}
+
+.notificationItem {
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(171, 210, 122, 0.08);
+}
+
+.notificationItem p {
+  margin: 6px 0 0;
+  color: var(--font-color-secondary);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.menuAction,
+.inlineAction,
+.iconButton {
+  background: none;
+  border: none;
+  color: var(--font-color-primary);
+}
+
+.menuAction {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 10px 0;
+}
+
+.inlineAction {
+  padding: 0;
+  color: var(--font-color-link);
+}
+
+.badge {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--alarm-color);
+}
+
+.emptyText {
+  margin: 0;
+  color: var(--font-color-secondary);
+}
+
 .skillsToggle {
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
@@ -106,4 +187,11 @@
 
 .skillsToggleActive svg{
   transform: rotate(180deg);
+}
+
+@media (max-width: 768px) {
+  .dropdownPanel {
+    width: min(320px, calc(100vw - 32px));
+    right: -8px;
+  }
 }

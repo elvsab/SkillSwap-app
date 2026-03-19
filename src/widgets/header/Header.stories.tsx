@@ -29,6 +29,8 @@ export const Guest: Story = {
   args: {
     variant: "guest",
     name: "Имя",
+    searchText: "",
+    onSearchChange: () => undefined,
   },
 };
 
@@ -36,6 +38,8 @@ export const User: Story = {
   args: {
     variant: "user",
     name: "Имя",
+    searchText: "",
+    onSearchChange: () => undefined,
   },
 };
 
@@ -43,5 +47,7 @@ export const Auth: Story = {
   args: {
     variant: "auth",
     name: "Имя",
+    searchText: "",
+    onSearchChange: () => undefined,
   },
 };

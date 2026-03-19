@@ -31,7 +31,7 @@ export const favoritesApi = {
           }
 
           resolve({ success: true, data: undefined });
-        } catch (error) {
+        } catch {
           resolve({ 
             success: false, 
             error: { message: 'Ошибка при добавлении в избранное' } 
@@ -49,7 +49,7 @@ export const favoritesApi = {
           favorites[`${type}s`] = favorites[`${type}s`].filter((item: FavoriteItem) => item.id !== itemId);
           localStorage.setItem('favorites', JSON.stringify(favorites));
           resolve({ success: true, data: undefined });
-        } catch (error) {
+        } catch {
           resolve({ 
             success: false, 
             error: { message: 'Ошибка при удалении из избранного' } 
@@ -65,7 +65,7 @@ export const favoritesApi = {
         try {
           const favorites = JSON.parse(localStorage.getItem('favorites') || '{"users":[],"skills":[]}');
           resolve({ success: true, data: favorites });
-        } catch (error) {
+        } catch {
           resolve({ 
             success: false, 
             error: { message: 'Ошибка при загрузке избранного' } 

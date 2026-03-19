@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { LoginForm } from "../../features/auth/ui/LoginForm/LoginForm";
 import {
@@ -9,19 +9,24 @@ import {
 import styles from "./LoginPage.module.css";
 import { useAuth } from "@/app/providers/authProvider/useAuth";
 import { Loader } from "@/shared/ui/loader/loader"; 
+import LightBulbImage from "../../shared/assets/images/light-bulb.png";
 
 export const LoginPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { login, isAuthenticated } = useAuth();
   const loading = useSelector(selectAuthLoading);
   const error = useSelector(selectAuthError);
+  const redirectTo =
+    (location.state as { from?: { pathname?: string } } | null)?.from
+      ?.pathname ?? "/profile";
 
   useEffect(() => {
-    if (isAuthenticated) navigate("/profile");
-  }, [isAuthenticated, navigate]);
+    if (isAuthenticated) navigate(redirectTo, { replace: true });
+  }, [isAuthenticated, navigate, redirectTo]);
 
   const handleFormSubmit = (data: { email: string; password: string }) => {
-    login(data.email, data.password);
+    void login(data.email, data.password);
   };
 
   const handleSwitchToRegister = () => {
@@ -55,7 +60,7 @@ export const LoginPage = () => {
 
         <div className={styles.imageBlock}>
           <img
-            src="src\shared\assets\images\light-bulb.png"
+            src={LightBulbImage}
             alt="Login illustration"
             className={styles.image}
           />
