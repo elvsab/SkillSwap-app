@@ -49,12 +49,14 @@ https://skill-swap-app-phi.vercel.app/
 
 ## Key Routes
 
-/ — catalog and filters
-/skill/:id — skill details page
-/login, /registration/step1..3 — authentication
-/profile/* — profile, requests, exchanges, favorites, skills
-/create — create skill page
-/favorites — favorites list
+| Route | Description |
+|------|------------|
+| `/` | catalog and filters |
+| `/skill/:id` | skill details page |
+| `/login`, `/registration/step1..3` | authentication |
+| `/profile/*` | profile, requests, exchanges, favorites, skills |
+| `/create` | create skill page |
+| `/favorites` | favorites list |
 
 ---
 
