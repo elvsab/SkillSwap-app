@@ -3,13 +3,15 @@
 SkillSwap is a single-page application (SPA) for skill exchange in the format:
 **“I can teach / I want to learn”**.
 
-This is a collaborative project where I was **Team Lead / Frontend Developer**.
+## Team Project
+
+This project was developed as part of a team.
 
 ---
 
 ##  Demo
 
-
+https://skill-swap-app-phi.vercel.app/
 ---
 
 ## Tech Stack
