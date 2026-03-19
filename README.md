@@ -11,7 +11,7 @@ This project was developed as part of a team.
 
 ##  Demo
 
-https://skill-swap-app-phi.vercel.app/
+[Open App](https://skill-swap-app-phi.vercel.app/)
 ---
 
 ## Tech Stack
